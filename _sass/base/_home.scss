@@ -1,0 +1,197 @@
+/* Also see legacy _page.scss for applicable styles */
+
+.home, .landing-page {
+    .page-section {
+        padding: $page-spacing-lg 0;
+        @media(min-width:768px) {
+            padding: $page-spacing-lg 0;
+        }
+        
+        &.section-slim {
+            padding: 50px 0;
+            @media(min-width:768px) {
+            padding: 100px 0;
+            }
+        }
+        
+        .section-heading-row {
+            margin-bottom: 75px;
+        }
+        
+        h2.section-heading {
+            font-size: 24px;
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+        
+        h3.section-subheading {
+            font-weight: 400;
+            font-style: italic;
+            text-transform: none;
+            @include serif-font;
+            color: $gray-300;
+            line-height: 1.4;
+            font-size: 18px;
+        }
+    }
+
+    .bg-dark {
+        color: $white;
+        background-color: $black !important;
+    }
+
+    .text-muted {
+        color: $gray-300;
+    }
+}
+
+/* Components */
+
+.description-col {
+    text-align: center;
+}
+
+.section-cta {
+    border-top: 1px solid #aaa;
+    border-right: 1px solid #111;
+    border-bottom: 1px solid #111;
+    border-left: 1px solid #aaa;
+}
+
+.service-table {
+    td {
+        vertical-align: middle;
+        border: none;
+        line-height: 1.2;
+    }
+}
+
+/* Page sections, .page-section */
+
+#lovespresents {
+    background-color: #073563;
+    color: #fff;
+
+    .section-cta {
+        background-color: #ff6161;
+        color: #fff;
+    }
+}
+
+#highground {
+    background-color: #66cc99;
+    color:#333;
+
+    .service-table {
+        color: #333;
+    }
+
+    .highground-slogan {
+        font-variant: all-small-caps;
+        font-weight: bold;
+        font-size: 1.4em;
+    }
+
+    .section-cta {
+        background-color: #333;
+        color: #fff;
+    }
+}
+
+#alexbrady {
+    background-color: #333;
+    color:#fefefe;
+
+    a:not(.btn) {
+        color: #fefefe;
+        font-weight: bold;
+        letter-spacing: .5px;
+    }
+
+    .service-table {
+        color: #fefefe;
+    }
+
+    .section-cta {
+        background-color: #000;
+        color: #fff;
+
+        border-top-color: #777;
+        border-right-color: #555;
+        border-bottom-color: #555;
+        border-left-color: #777;
+    }
+}
+
+#open-source {
+    background-color: #fff;
+    color:#000;
+}
+
+// Styling for the contact section
+// section#contact {
+//   background-color: $black;
+//   background-image: url("#{$contact-image}");
+//   background-repeat: no-repeat;
+//   background-position: center;
+
+//   .section-heading {
+//     color: $white;
+//   }
+
+//   .section-subheading {
+//     color: $gray-300;
+//     line-height: 1.4;
+//     font-size: 18px;
+//   }
+
+//   .form-group {
+//     input,
+//     textarea {
+//       padding: 20px;
+//     }
+//     input.form-control {
+//       height: auto;
+//     }
+//     textarea.form-control {
+//       height: 132px;
+//     }
+//   }
+
+//   .form-control:focus {
+//     border-color: $primary;
+//     box-shadow: none;
+//   }
+
+//   @keyframes rock {
+//     0%,5%, 10% { transform: rotate(0deg); }
+//     2.5% { transform: rotate(-5deg); }
+//     7.5% { transform: rotate(5deg); }
+//   }
+
+//   .cta-btn {
+//       font-size: 1.2em;
+//       animation: rock 5.6s linear infinite;
+//   }
+
+//   ::-webkit-input-placeholder {
+//     font-weight: 700;
+//     color: $gray-400;
+//     @include heading-font;
+//   }
+//   :-moz-placeholder {
+//     font-weight: 700;
+//     color: $gray-400;
+//     @include heading-font;
+//   }
+//   ::-moz-placeholder {
+//     font-weight: 700;
+//     color: $gray-400;
+//     @include heading-font;
+//   }
+//   :-ms-input-placeholder {
+//     font-weight: 700;
+//     color: $gray-400;
+//     @include heading-font;
+//   }
+// }

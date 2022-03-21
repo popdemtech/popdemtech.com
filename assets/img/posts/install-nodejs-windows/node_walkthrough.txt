@@ -1,0 +1,34 @@
+install nodejs on windows
+
+- https://chocolatey.org/packages/chocolatey
+- https://chocolatey.org/packages/python
+- https://chocolatey.org/packages/visualstudio2019-workload-vctools
+
+1. nodejs.org
+2.Setup wizard
+3. accept terms
+4. install directory
+5. Customize features
+6. Tools for native modules. - installs chocolatey, python, other libs
+* I checked the box and went through the install process because I'll forget later.
+* https://github.com/nodejs/node-gyp#on-windows
+7. Install
+8. Wizard goes through installing node.js. Progress bar.
+9. Allow Node.js to make changes to the device
+10. After installation, window for installing native modules appears
+11. The process will then open Powershell. Allow Powershell to make changes to the device.
+12. The install takes some time
+
+12. Install fails. Google it.
+* specifically https://stackoverflow.com/a/68912225
+go to edge (or the browser you choose for download)
+go to download tab, where there is node-v14.17.5-x64.msi (for edge is CTRL+J)
+OPEN FILE
+CLICK REPAIR and that's it
+Type choco list -lo to see if the packages visualstudio-installer, visualstudio2019-workload-vctools, and visualstudio2019buildtools are installed
+
+node -v
+v16.13.2
+
+npm -v
+v8.2.1

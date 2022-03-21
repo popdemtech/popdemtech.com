@@ -1,0 +1,45 @@
+{% for service in include.services %}
+
+  <div class="row mb-4">
+    {%- if forloop.index != 1 -%}
+    <hr class="mb-4 mt-4">
+    {%- endif -%}
+
+    <div class="service-information col-12 col-md-8">
+      <h3 class="service-name">{{ service.name }}</h3>
+      <p class="service-description">{{ service.description }}</p>
+      <b>Included:</b><br>
+      <p class="service-included">{{ service.included }}</p>
+    </div>
+
+    <div class="col-12 col-md-4 ">
+      <div
+        class="service-image-price"
+        style="background-image: url({{ service.image.src }});"
+      >
+        <!-- changes here should be made in .spacer.invisible below -->
+        <div class="overlay">
+          <p class="price-range-label mb-0">Price range:</p>
+          <p class="service-price splash-color mb-0">{{ service.price_range }}</p>
+        </div>
+
+        <!-- necessary for .service-image-price height -->
+        <div class="spacer invisible">
+          <p class="price-range-label mb-0">Price range:</p>
+          <p class="service-price mb-0">{{ service.price_range }}</p>
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <a class="cta-btn btn btn-tertiary" data-bs-toggle="modal" data-bs-target="#contact-modal" href="#">Order Now</a>
+    </div>
+  </div>
+  
+  {%- if service.additional -%}
+  <div class="row">
+    <div class="col">
+      <p class="service-additional">{{ service.additional }}</p>
+    </div>
+  </div>
+  {%- endif-%}
+{% endfor %}

@@ -1,0 +1,54 @@
+---
+permalink: /designs/business/portfolio
+layout: page_with_masthead
+external_id: functional_portfolio
+main_content_class: functional_portfolio
+---
+
+<!-- Assign Variables -->
+{% assign functional_designs_page = site.pages | where: "external_id", "functional_designs" | first %}
+{% assign category = site.data.designs | where: "external_id", "functional_designs" | first %}
+{% assign header_title = category.header.title %}
+{% comment %}
+{% assign header_text = site.data.functional_designs.site_text.header.text %}
+{% assign header_subtext = site.data.functional_designs.site_text.header.subtext %}
+{% assign header_button = site.data.functional_designs.site_text.header.button %}
+{% assign header_button_link = site.data.functional_designs.site_text.header.button_link %}
+{% endcomment %}
+
+<!-- Rendered content -->
+{% include contact_modal.html %}
+
+{% include masthead.html
+    title=header_title
+    text=header_text
+    subtext=header_subtext
+    button_text=header_button
+    button_link=header_button_link
+%}
+
+<main class="{{ page.main_content_class }}">
+    <div class="page-section">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <h2 class="section-heading">
+                        Business Design Portfolio
+                    </h2>
+
+                    <div class="page-description">
+                        {{ category.description }}
+                    </div>
+
+                    <div>
+                      <a href="{{ functional_designs_page.permalink }}">See our <b>Business Design Services Offerings</b></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        {% include portfolio_cards.html filter="functional_designs" %}
+    </div>
+</main>

@@ -1,0 +1,241 @@
+# Designs
+- id: designs
+  external_id: designs
+  header:
+    title: What We Create
+# Functional Designs
+- id: functional_designs
+  external_id: functional_designs
+  directory: /assets/img/functional_designs
+  image:
+    src: /assets/img/service_categories/oneself_dotdash_logos.jpg
+    alt: oneself and dotdash logos
+  header:
+    title: <div>Business Designs</div>
+    background_img:
+  description: >
+    <p>Business designs are productions made for use in internet, application, or visual presentation formats.</p>
+    <p>For small businesses, entrepreneurs, and creators seeking to develop an online presence, we offer <a data-bs-toggle="modal" data-bs-target="#contact-modal" href="#" class="highlight-link">Logo, Web Interface, and Business Essentials</a> service bundles.</p>
+  short_desc: Business designs are for business and web purposes. If you need branding, logo, or business presentation graphics, start here!
+  why: Looking for new brand images? Looking to spruce up the ones you have? Just need business cards? Check out these business graphics deals.
+  collections:
+    - title: One Self
+      product: Logo Design, Web UI Design
+      description: Graphical interface for the One Self Mighty Network
+      url: https://oneself.mn.co
+      directory: oneself
+      collection_image:
+        src: /assets/img/functional_designs/oneself/gold_on_black_separate_os.png
+        alt: gold on black os
+      items:
+        - filename: /assets/img/functional_designs/oneself/circle_s_yellow_red_red.png
+          description: Flat color logo
+          alt: flat color yellow s in yellow circle red background
+        - filename: /assets/img/functional_designs/oneself/circle_s_gold_red.png
+          description: Partial transparancy logo
+          alt: color gold s on gold circle red background
+        - filename: /assets/img/functional_designs/oneself/gold_on_black_separate_os.png
+          description: Alternate coloring
+          alt: color gold s in gold circle black background
+        - filename: /assets/img/functional_designs/oneself/one_self_gold_on_gray.png
+          description: Wordmark in alternate coloring
+          alt: one self logo wordmark gold on black
+        - filename: /assets/img/functional_designs/oneself/avatar_yellow_red.jpg
+          description: Generic user avatar in primary colors
+          alt: flat color yellow user icon in yellow circle red background
+        - filename: /assets/img/functional_designs/oneself/purpose_banner_2.png
+          description: Site banner for purpose page
+          alt: purpose banner white on black
+        - filename: /assets/img/functional_designs/oneself/red_gold_favicon.png
+          description: Favicon
+          alt: gold s in gold circle favicon
+    - title: Chokolate Chip Family Dolls
+      product: Logo Design, Graphic Ediiting
+      description: Logo Digitization, Image Editing, Webpage Wireframing
+      url: https://chokolatechipfamily.com
+      directory: ccfd
+      collection_image:
+        src: /assets/img/functional_designs/ccfd/circle_doll_brown.png
+        alt: ccfd logo brown
+      items:
+        - filename: /assets/img/functional_designs/ccfd/circle_doll_brown.png
+          description: Primary logo &mdash; black and brown
+          alt: brown and black ccfd logo
+        - filename: /assets/img/functional_designs/ccfd/circle_doll_black.png
+          description: Primary logo &mdash; black and transparent
+          alt: black and transparent ccfd logo
+        - filename: /assets/img/functional_designs/ccfd/original_wordmark.png
+          description: Original 1970's wordmark, extracted
+          alt: brochure clipping of original ccfd wordmark
+        - filename: /assets/img/functional_designs/ccfd/wordmark_brown.png
+          description: Wordmark &mdash; black and brown
+          alt: ccfd wordmark in black and brown
+        - filename: /assets/img/functional_designs/ccfd/wordmark_black.png
+          description: Wordmark &mdash; black and transparent
+          alt: ccfd wordmark in black and transparent
+        - filename: /assets/img/functional_designs/ccfd/wordmark_colored.png
+          description: Wordmark &mdash; client desired coloring
+          alt: ccfd wordmark in green and orange
+        - filename: /assets/img/functional_designs/ccfd/combomark_brown.png
+          description: Horizontal combination mark
+          alt: ccfd combination mark Horizontal
+        - filename: /assets/img/functional_designs/ccfd/combomark_brown_2.png
+          description: Alternative combination mark
+          alt: ccfd combination mark stacked
+        - filename: /assets/img/functional_designs/ccfd/vanilla_family_cropped.jpeg
+          description: Cropped and enhanced product photo
+          alt: vanilla chocolate chip family in box
+        - filename: /assets/img/functional_designs/ccfd/product_page.png
+          description: Wireframe of a product page
+          alt: wireframe of a product page
+  services:
+    - name: Basic Logo Package
+      description: We will create one logo and one combination mark for your business, app, or online brand.
+      included: Two (2) PNGs. Two (2) source files (web-safe SVGs) can be included for an addtional price. One (1) revision.
+      price_range: $50 flat rate
+      additional: If you need a different image format (JPG, WEBP, etc.), we will provide that in place of the PNGs or for an additional price.
+      image:
+        src: /assets/img/lovespresents_embroidery.jpg
+        alt: words loves presents embroidered on hat
+    - name: Branding Logo Package
+      description: We will create one logo, one wordmark, and one combination mark (3 total) for your business, app, or online brand.
+      included: Three (3) PNGs and three (3) source files, (web-safe SVGs). Three (3) revisions.
+      price_range: $100 &ndash; $250
+      addtional: It's likely you will need more than 3 images for a full brand. For example, you may need both a horizontal and a vertical combination mark for presentation on desktop computer and mobile devices respectively. The price range reflects any additional images you may need. For the base six (6) total images, the range minimum is the price you'll pay.
+      image:
+        src: /assets/img/lovespresents_embroidery.jpg
+        alt: words loves presents embroidered on hat
+    - name: Business Card Package
+      description: You will get front and back business card designs for up to 20 people. Printing and shipping provided as an optional add-on.
+      included: Front and back business card designs (PNGs) for each member of your team. Optionally, get business cards printed and delivered to your doorstep for an additional value.
+      price_range: $50 &ndash; $250
+      additional: Digital prints provided can be used with any mainstream print service and at-home solutions. One-sided designs available at reduced price.
+      image:
+        src: /assets/img/lovespresents_embroidery.jpg
+        alt: words loves presents embroidered on hat
+    - name: Social Media Interface Package
+      description: "We will create profile image, banner, and color scheme for a social media service. E.g.: Twitter, Reddit, Facebook, Mighty Networks, etc."
+      included: You will get all images you need to launch (or redesign!) your social media account page. Exact images vary per platform.
+      price_range: $50 &ndash; $250
+      additional: Price varies based on your needs and the social media platform. For example, a Twitter account requires a 3x1 banner and a 1x1 profile image. If you only need a banner, expect a reduced price. Talk to us about your specific needs!
+      image:
+        src: /assets/img/lovespresents_embroidery.jpg
+        alt: words loves presents embroidered on hat
+    - name: Social Media Graphic Series
+      description: We will create a series of visually similar graphics for promotion of your brand on Social Media (Facebook, Instagram, Twitter).
+      included: Five, fifteen, or thirty (1, 15, 30) visually similar images of ideal dimensions for one social media platform (e.g. Instagram.) Post to your social media accounts once a week, every two days, or every day for a month! Recycle the images as much after that.
+      price_range: $75 &ndash; $300
+      additional: Get one a series optimized for a different platforms (e.g. Instagram <i>and</i> Twitter) at a reduced price. If your graphics are word-based, you must provide copywriting. We also provide copywriting services. Contact us for details.
+      image:
+        src: /assets/img/lovespresents_embroidery.jpg
+        alt: words loves presents embroidered on hat
+
+# Aesthetic Designs
+- id: aesthetic_designs
+  external_id: aesthetic_designs
+  directory: /assets/img/aesthetic_designs
+  image:
+    src: /assets/img/lovespresents_embroidery.jpg
+    alt: loves presents with logo embroidered on cap
+  header:
+    title: <div>Aesthetic Designs</div>
+    background_img:
+  description: <p>Aesthetic designs are productions made for wall art, embroidery, and simply to be visually engaging.</p> <p>Would you like a specially made design series for yourself or another? Need help jump starting your next design product? We offer <a data-bs-toggle="modal" data-bs-target="#contact-modal" href="#" class="highlight-link">Design Commissioning and Consultation</a> service bundles, and would love to help!</p>
+  collections:
+    - title: Barely There
+      product: Posters
+      description: Subtle shapes for the discerning eye (All Vertical!)
+      # url: https://oneself.mn.co
+      directory: barely_there
+      collection_image:
+        src: /assets/img/aesthetic_designs/barely_there/dark_star.png
+        alt: a dark star
+      items:
+        - filename: /assets/img/aesthetic_designs/barely_there/dark_star.png
+          description: a dark star
+          alt: black star over a dark background
+        - filename: /assets/img/aesthetic_designs/barely_there/light_star.png
+          description: a light star
+          alt: pale yellow star over white background
+    - title: "How?: About God"
+      product: Posters
+      description: A poster series that asks the question "How is this about God?" Featuring quadrangles.
+      # url: https://oneself.mn.co
+      directory: how_about_god
+      collection_image:
+        src: /assets/img/aesthetic_designs/how_about_god/all_designs_poster.png
+        alt: six how about god posters
+      items:
+        - filename: /assets/img/aesthetic_designs/how_about_god/concentric_black_bg.png
+          description: Concentric quads &mdash; light to dark
+          alt: light quadrangle within a darker quadrangle within a darker quadrangle
+        - filename: /assets/img/aesthetic_designs/how_about_god/quads_black_bg.png
+          description: Three quads of varied height &mdash; largest dark
+          alt: large dark quadrangle beside a stack of two quads smaller light stacked atop a longer mid-colored
+        - filename: /assets/img/aesthetic_designs/how_about_god/stripes_black_bg.png
+          description: Three quads of varied width &mdash; largest dark
+          alt: large dark quadrangle beside a thinner mid-colored quad beside a thinner light quad
+        - filename: /assets/img/aesthetic_designs/how_about_god/concentric_white_bg.png
+          description: Concentric quads &mdash; dark to light
+          alt: dark quadrangle within a darker quadrangle within a lighter quadrangle
+        - filename: /assets/img/aesthetic_designs/how_about_god/quads_white_bg.png
+          description: Three quads of varied height &mdash; largest light
+          alt: large light quadrangle beside a stack of two quads smaller dark stacked atop a longer mid-colored
+        - filename: /assets/img/aesthetic_designs/how_about_god/stripes_white_bg.png
+          description: Three quads of varied width &mdash; largest light
+          alt: large light quadrangle beside a thinner mid-colored quad beside a thinner dark quad
+        - filename: /assets/img/aesthetic_designs/how_about_god/all_designs_poster.png
+          description: Six posters with signature "How?"
+          alt: six how about god posters
+    - title: Love You
+      product: Digital Design
+      description: Gradient based, peaceful patterns
+      # url: https://chokolatechipfamily.com
+      directory: love_you
+      collection_image:
+        src: /assets/img/aesthetic_designs/love_you/1.png
+        alt: love you in pink purple and orange
+      items:
+        - filename: /assets/img/aesthetic_designs/love_you/1.png
+          description: Love You on a Springtime Evening
+          alt: love you in pink purple and orange
+        - filename: /assets/img/aesthetic_designs/love_you/2.png
+          description: Love You on a Springtime Night
+          alt: love you in white purple and gold
+        - filename: /assets/img/aesthetic_designs/love_you/3.png
+          description: Love You on a Summer Evening
+          alt: love you orange white and blue
+        - filename: /assets/img/aesthetic_designs/love_you/4.png
+          description: Love You on a Summer Night
+          alt: love you in white gold and black
+        - filename: /assets/img/aesthetic_designs/love_you/5.png
+          description: Love You in the Autumntime
+          alt: love you in yellow gold and black
+        - filename: /assets/img/aesthetic_designs/love_you/6.png
+          description: Love You &mdash; Lemon Lime!
+          alt: love you in yellow gold and green
+  services:
+    - name: Consumer Product
+      description: Do you have your own design you would like to have printed on home goods or apparel? Our team of designers can help you bring your art to life! Contact us to have your design printed and potentially sold at our sister site, <a href="https://lovespresents.com">Love's Presents.</a>
+      included: Your art on a print-on-demand consumer good.
+      price_range: $50 &ndash; $250
+      additional: Price depends on number of different products you'd like your design available on and complexity of variation per product.
+      image:
+        src: /assets/img/lovespresents_embroidery.jpg
+        alt: words loves presents embroidered on hat
+    - name: Sell on LovesPresents.com
+      description: Put your art in front of a global audience on our sister site, LovesPresents.com. Our Guest Designer program was made with the digital creative in mind. Contact us today to get started.
+      included: A Guest Designer link and pre-created art listed for sale on LovesPresents.com
+      price_range: $150 &ndash; $250
+      additional: Price depends on number of products plus complexity of variation. If you have art, but no products, see our "Consumer Product" service offering. Items sold on LovesPresents.com or similar subject to profit share.
+      image:
+        src: /assets/img/lovespresents_embroidery.jpg
+        alt: words loves presents embroidered on hat
+    - name: Commission
+      description: Our team of designers will come up with the perfect custom creation just for you. Let us know the occasion and we'll work with you to produce the masterpiece.
+      included: The digital design of your dreams.
+      price_range: $50 &ndash; Contact Us
+      additional: Reach out with your design needs &mdash; any and all! If it is something not in our design team's wheelhouse, we will find the right designer for you through our global Designer Network.
+      image:
+        src: /assets/img/lovespresents_embroidery.jpg
+        alt: words loves presents embroidered on hat

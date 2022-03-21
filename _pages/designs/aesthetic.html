@@ -1,0 +1,64 @@
+---
+permalink: /designs/aesthetic
+layout: page_with_masthead
+external_id: aesthetic_designs
+main_content_class: aesthetic_designs
+---
+
+<!-- Assign Variables -->
+{% assign aesthetic_portfolio_page = site.pages | where: "external_id", "aesthetic_portfolio" | first %}
+{% assign functional_designs_page = site.pages | where: "external_id", "functional_designs" | first %}
+{% assign category = site.data.designs | where: "external_id", "aesthetic_designs" | first %}
+{% assign services = category.services %}
+{% assign header_title = category.header.title %}
+
+<!-- Rendered content -->
+{% include contact_modal.html %}
+
+<div class="designs">
+    {% include masthead.html
+        title=header_title
+        text=header_text
+        subtext=header_subtext
+        button_text=header_button
+        button_link=header_button_link
+    %}
+
+    <main class="{{ page.main_content_class }}">
+        <div class="page-section">
+            <div class="container">
+                <div class="row mb-4">
+                    <div class="col">
+                        <h2 class="section-heading">
+                            How We Can Help
+                        </h2>
+
+                        <div class="page-description">
+                            {{ category.description }}
+                        </div>
+
+                        <p>
+                          <a href="{{ functional_designs_page.permalink }}">See our <b>Business Design Services Offerings</b></a>
+                        </p>
+
+                        <p>
+                          <a href="{{ aesthetic_portfolio_page.permalink }}">See aesthetic examples</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="page-section">
+            <div class="container">
+                <div class="mb-4 service-list">
+                    {% include service_category_services.html services=services %}
+                </div>
+
+                <div class="row justify-content-center">
+                    <a class="cta-btn btn btn-tertiary p-3 w-75" data-bs-toggle="modal" data-bs-target="#contact-modal" href="#">Contact us to get started today</a>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>

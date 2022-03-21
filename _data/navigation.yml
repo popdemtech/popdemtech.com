@@ -1,0 +1,52 @@
+# nav:
+  # - title: "Portfolio"
+  #   url: /designs
+
+# - title: Services
+#   dropdown: true
+#   dropdown_links:
+#     - title: For Business
+#       url: /designs/business
+#     - title: For Art Lovers
+#       url: /designs/aesthetic
+
+# - title: Our Designs
+#   dropdown: true
+#   dropdown_links:
+#     - title: Business Graphics
+#       url: /designs/business/portfolio
+#     - title: Art and Decor
+#       url: /designs/aesthetic/portfolio
+#     - title: Shop Designs 
+#       url: https://lovespresents.com
+#       target: _blank
+  
+# - title: "About"
+#   section: timeline
+
+# - title: "Team"
+#   section: team
+
+- title: "Tech Blog"
+  url: "/blog"
+
+- title: "Brands"
+  dropdown: true
+  dropdown_links:
+    - title: "LovesPresents.com"
+      section: "lovespresents"
+    - title: "alexbrady"
+      section: "alexbrady"
+    - title: "High Ground"
+      section: "highground"
+    - title: "Open-source"
+      section: "open-source"
+
+# - title: "SpareFoot"
+#   section: "sparefoot"
+
+
+
+- title: "Contact"
+  url: "/contact"
+  visible_small_screen: true
