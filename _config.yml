@@ -13,14 +13,14 @@
 
 theme: jekyll-agency
 
-url    : "https://alexa-anderson.com" # the base hostname & protocol for your site, e.g. http://example.com
+url    : "https://popdemtech.com" # the base hostname & protocol for your site, e.g. http://example.com
 baseurl: "" # the subpath of your site, e.g. /blog
 include: ["_pages"]
 
-title      : Alexa Anderson
-email      : hellohighgroundtech@gmail.com
-description: Professional Website
-author     : High Ground Tech Team
+title      : "@popdemtech"
+email      : popdemtech@gmail.com
+description: Website for Popular Demand
+author     : Popular Demand
 copyright  : 
 # logo     : #optional, defaults to site title
   # path: assets\img\clients\creative-market.jpg

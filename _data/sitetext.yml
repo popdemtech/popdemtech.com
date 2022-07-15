@@ -4,14 +4,14 @@ header:
   subtext: 
   button:
   buttonlink:
-  quote: "*software professional making excellence a habit*"
+  quote: "*built by Popular Demand* 🛠"
   social_links:
     - class: "fa-twitter"
       href: "https://twitter.com/popdemtech"
     - class: "fa-linkedin-in"
       href: "https://linkedin.com/in/alexa-anderson"
     - class: "fa-github"
-      href: "https://github.com/populardemand"
+      href: "https://github.com/popdemtech"
 
 service_categories:
   section_title: We Create
@@ -166,11 +166,11 @@ contact:
 footer:
   legal: "Privacy Policy"
   social:
-    - url: https://twitter.com/alexatheperfect
+    - url: https://twitter.com/popdemtech
       icon: "fab fa-twitter"  
-    - url: https://www.linkedin.com/in/alexa-anderson
+    - url: https://www.linkedin.com/company/69354809/admin/
       icon: "fab fa-linkedin-in"
-    - url: https://github.com/populardemand
+    - url: https://github.com/popdemtech
       icon: "fab fa-github"
     - url: https://instagram.com/popdemtech
       icon: "fab fa-instagram"

@@ -10,12 +10,15 @@ class_name: contact-page
 <!-- Rendered content -->
 {% include contact_modal.html %}
 
-<div class="page-section row">
+<div class="page-section row" style="padding-top:70px">
 	<div class="col col-12 col-md-8 offset-md-2">
 		<h1>Contact</h1>
-		<p>Alexa is currently available for small-business and personal custom software commissions.</p>
-		<p>Reach out for custom software builds. Or: Reach out if you're an entrepreneur or developer a cool project in mind, and you want to share collaborative thoughts.</p>
-		<a href="/resume">View Resume</a>
+		<p>Popular Demand builds and publishes cool web content. Reach out for consultation and collaboration.</p>
+		<!-- Calendly link widget begin -->
+		<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+		<script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+		<a href="" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/popdemtech/software-consultation'});return false;">Request a Meeting</a> - Calendly
+		<!-- Calendly link widget end -->
 	</div>
 </div>
 

@@ -30,17 +30,17 @@
 - title: "Tech Blog"
   url: "/blog"
 
-- title: "Brands"
-  dropdown: true
-  dropdown_links:
-    - title: "LovesPresents.com"
-      section: "lovespresents"
-    - title: "alexbrady"
-      section: "alexbrady"
-    - title: "High Ground"
-      section: "highground"
-    - title: "Open-source"
-      section: "open-source"
+# - title: "Brands"
+#   dropdown: true
+#   dropdown_links:
+#     - title: "LovesPresents.com"
+#       section: "lovespresents"
+#     - title: "alexbrady"
+#       section: "alexbrady"
+#     - title: "High Ground"
+#       section: "highground"
+#     - title: "Open-source"
+#       section: "open-source"
 
 # - title: "SpareFoot"
 #   section: "sparefoot"
