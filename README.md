@@ -51,7 +51,7 @@ $ git push [...] # push it where you want
 
 ### GitHub Pages
 
-The generated website is made to be run on Github Pages. Within the Github repository for the generated website, navigate the the GitHub Pages settings, and set the site to be built from the `/docs` directory.
+The generated website is made to be run on Github Pages. Within the Github repository for the generated website, modify the following GitHub Pages settings:
 
 * Set the site to be build from the `/docs` directory
 * Set the custom domain to be the same as the domain in the CNAME file
