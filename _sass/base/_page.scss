@@ -1,0 +1,52 @@
+.standard-page {
+    .page-section {
+        padding: $page-spacing-sm;
+
+        &:not(:last-child) {
+            margin-bottom: $page-spacing-lg;
+        }
+
+        &:first-child {
+            padding-top: $page-spacing-sm * 2;
+            margin-bottom: 0;
+        }
+
+        @media(min-width:768px) {
+            padding: $page-spacing-md 0;
+
+            &:first-child {
+                padding-top: $page-spacing-md * 2;
+            }
+
+            &:not(:last-child) {
+                margin-bottom: $page-spacing-md;
+            }
+        }
+
+        h2.section-heading {
+            font-size: 40px;
+            margin-top: 0;
+            margin-bottom: $page-spacing-sm;
+        }
+
+        h3.section-subheading {
+            font-size: 16px;
+            font-weight: 400;
+            font-style: italic;
+            margin-bottom: 75px;
+            text-transform: none;
+            @include serif-font;
+        }
+
+        .heading-bar {
+            color: $white;
+            background-color: $primary;
+            margin: 0 -20px;
+            padding: 10px 20px;
+
+            *:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+}

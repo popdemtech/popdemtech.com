@@ -1,0 +1,100 @@
+<!-- if a filter is passed, only show that category of designs -->
+{% if include.filter %}
+  {% assign category = site.data.designs | where: "external_id", include.filter | first %}
+{% endif %}
+
+<!-- Cards -->
+<div class="portfolio-collection-cards">
+    <div class="row row-cols-1 row-cols-md-2">
+
+    {% for collection in category.collections %}
+
+    <!-- Card -->
+    <div class="portfolio-collection col mb-4">
+        <a class="portfolio-collection-link" data-bs-toggle="modal" data-bs-target="#p{{ forloop.index }}">
+          <div class="card h-100">
+            <div class="card-body">
+
+              <!-- title -->
+              <h4 class="collection-title">{{ collection.title }}</h4>
+
+              <!-- description and image-->
+              <div class="row">
+
+                <!-- description-->
+                <div class="col-6">
+                  <div class="portfolio-collection-description">
+                    <p class="text-muted collection-description">
+                      {{ collection.description }}
+                    </p>
+                    <p class="text-muted">
+                      <b>Products:</b> {{ collection.product }}
+                      <br/>
+                      <span class="view-all">View more designs</spa>
+                    </p>
+                  </div>
+                </div>
+
+                <!-- image -->
+                <div class="col-6">
+                  <div class="collection-image">
+                    <img class="img-fluid" src="{{ collection.collection_image.src }}" alt="{{ collection.collection_image.alt }}">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
+
+    <!-- Modal -->
+    <div class="portfolio-collection-modal modal fade" id="p{{ forloop.index }}" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="close-modal" data-bs-dismiss="modal">
+          <div class="lr">
+            <div class="rl"></div>
+          </div>
+        </div>
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-8 mx-auto">
+              <div class="modal-body">
+                <div class="header">
+                  <h2 class="text-uppercase modal-heading">{{ collection.title }}</h2>
+
+                  <p class="item-intro text-muted">{{ collection.description }}</p>
+
+                  <p class="text-muted">
+                    Items listed are only a sampling of the full delivery. Check it out at <a href="{{ collection.url }}">{{ collection.url }}</a>.
+                  </p>
+                </div>
+
+                <div class="item-list">
+                  {% for item in collection.items %}
+                    <div class="row mb-5">
+                      <div class="col-6">
+                        <img class="item-image" src="{{ item.filename }}" alt="{{ item.alt }}">
+                      </div>
+                      <div class="col-6 d-flex align-items-center justify-content-center">
+                        <h5 class="item-description">{{ item.description }}</h5> 
+                      </div>
+                    </div>
+                  {% endfor %}
+                </div>
+
+                <button class="btn btn-primary" data-bs-dismiss="modal" type="button">
+                  <i class="fas fa-times"></i>
+                  {{ site.data.sitetext.portfolio.closebutton | default: "Close" }}
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+    {% endfor %}
+  </div>
+</div>
+

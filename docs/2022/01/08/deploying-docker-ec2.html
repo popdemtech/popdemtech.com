@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-T32N526KPS"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+	
+	gtag('config', 'G-T32N526KPS');
+  </script>
+  <!-- End Google Analytics -->
+
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Popular Demand Technology Website">
+  <meta name="author" content="ALEXBRADY">
+  <link rel="canonical" href="https://popdemtech.com/2022/01/08/deploying-docker-ec2.html">
+  <link rel="icon" type="image/png" href="/assets/img/favicon.png"/>
+
+  <title>Deploying a Docker Container on EC2 | POPDEMTECH</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="/assets/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom fonts for this template -->
+  <link href="/assets/css/all.min.css" rel="stylesheet" type="text/css">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+
+  <!-- Custom styles for this theme -->
+  <!--<link href="assets/css/agency.min.css" rel="stylesheet">-->
+  <link href="/assets/css/agency.css" rel="stylesheet">
+  
+</head>
+
+	<body id="page-top">
+    	<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+  <div class="container">
+    <div class="inner-container d-flex flex-wrap justify-content-between align-items-center w-100">
+      <div class="d-flex align-items-flex-start">
+        <a class="navbar-brand js-scroll-trigger" href="/#">POPDEMTECH</a>
+      </div>
+
+      <div class="right d-flex align-items-center d-lg-none">
+        
+        <ul class="navbar-nav text-uppercase">
+          
+            <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/contact">Contact</a></li>
+          
+        </ul>
+
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+      
+      <div class="collapse navbar-collapse justify-content-end" id="navbarResponsive">
+        <ul class="navbar-nav text-uppercase ml-auto">
+          <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/blog">Tech Blog</a></li><li class="nav-item"><a class="nav-link js-scroll-trigger" href="/contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>
+<!-- End Navigation -->
+
+		
+
+<div class="standard-page ">
+    <div class="container">
+        <div class="page-section row">
+  <div class="heading-row">
+    <div class="page-heading">
+      <h1>Tech Blog</h1>
+      <h3 class="tagline">by Popular Demand</h3>
+    </div>
+
+    <img src="/assets/img/alexa_popdemtech.jpg" width="100px" class="alexa-img" />
+  </div>
+</div>
+
+<h1>Deploying a Docker Container on EC2</h1>
+<p>Docker makes it easy to run multiple web applications on one server instance. Because it’s container architecture isolates applications and their dependencies, Docker is the software of choice when considering how to deploy multiple applications, databases, and caches and allow them to share resources without colliding namespaces/3rd party library requirements.</p>
+
+<p>In this solution walkthrough, I deploy a Docker Container onto EC2.</p>
+
+<!--more-->
+
+<p>The container I will be deploying can be found here: <a href="https://github.com/iamalexbrady/jobs">https://github.com/iamalexbrady/jobs</a>.</p>
+
+<h2 id="prerequisites">Prerequisites:</h2>
+
+<p>The code repository must be setup with the proper Docker configuration to allow <code class="language-plaintext highlighter-rouge">docker-compose up</code>, <code class="language-plaintext highlighter-rouge">docker run</code>, or similar command.</p>
+
+<p>The EC2 instance must have a user with sudo privilege, and you, the developer, must have login access to that user.</p>
+
+<p><strong>Steps</strong></p>
+<ol>
+  <li>SSH onto the remote server</li>
+  <li>Generate a public SSH key for Github SSH permissions (if necessary)</li>
+  <li>Copy the EC2 user’s public key (if necessary)</li>
+  <li>Add the EC2 public key to the Github account with ownership access to the repository (if neccessary)</li>
+  <li>Set up the repo on the server</li>
+  <li>Start the Docker container</li>
+</ol>
+
+<div class="spacer"></div>
+
+<h2 id="1-ssh-onto-container">1. SSH onto container</h2>
+
+<p><code class="language-plaintext highlighter-rouge">$ ssh [user_name]@[ip_address]</code></p>
+
+<div class="spacer"></div>
+
+<h2 id="2-generate-public-key-if-necessary">2. Generate public key (if necessary)</h2>
+
+<p>This step is mandatory to do once, but does not need to be repeated for each new Dockerize application setup. If you do not already have an ssh public key the remote server user, generate one.</p>
+
+<p><code class="language-plaintext highlighter-rouge">$ ssh-keygen</code></p>
+
+<p>The terminal will prompt:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Generating public/private rsa key pair.
+Enter file in which to save the key (/home/[user_name]/.ssh/id_rsa):
+Enter passphrase (empty for no passphrase):
+Enter same passphrase again:
+</code></pre></div></div>
+
+<p>The defaults are fine.</p>
+
+<div class="spacer"></div>
+
+<h2 id="3-copy-the-ec2-users-public-key-if-necessary">3. Copy the EC2 user’s public key (if necessary)</h2>
+
+<p>This step is mandatory to do once, but does not need to be repeated for each new Dockerize application setup.</p>
+
+<p>If you used the command from the last step, the public key has the same name as the
+file specified in the first prompt with an extension of <code class="language-plaintext highlighter-rouge">.pub</code>.</p>
+
+<p>If you need to find the name of the public key, try listing the contents of the
+<code class="language-plaintext highlighter-rouge">~/.ssh</code> directory.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="c"># list contents of ~/.ssh directory</span>
+<span class="nv">$ </span><span class="nb">ls</span> .ssh
+authorized_keys  id_rsa  id_rsa.pub
+<span class="err">$</span>
+<span class="nv">$ </span><span class="nb">cat</span> .id_rsa.pub
+ssh-rsa <span class="o">[</span>multi_line_encrypted_part] <span class="o">[</span>user_name]@[host]
+</code></pre></div></div>
+
+<p>Copy 100% of the contents of the public key, from ssh-rsa to the end of the host. All of it.</p>
+
+<div class="spacer"></div>
+
+<h2 id="4-add-the-ec2-public-key-to-the-github-account-with-ownership-access-to-the-repository">4. Add the EC2 public key to the Github account with ownership access to the repository</h2>
+
+<p>This step is mandatory to do once, but does not need to be repeated for each new Dockerize application setup.</p>
+
+<p>Navigate to your Github user settings. Find the section dedicated to SSH keys or similar. Add the public key copied from the last step.</p>
+
+<p style="text-align:center">
+	<img src="/assets/img/posts/github_settings.png" style="width:50%;min-width:320px;" />
+</p>
+
+<p style="text-align:center">
+	<img src="/assets/img/posts/github_setting_ssh.png" style="width:50%;min-width:320px;" />
+</p>
+
+<p style="text-align:center">
+	<img src="/assets/img/posts/github_setting_ssh_add_key.png" style="width:50%;min-width:320px;" />
+</p>
+
+<div class="spacer"></div>
+
+<h2 id="5-set-up-the-dockerized-repository-on-the-server">5. Set up the Dockerized repository on the server</h2>
+
+<p>Navigate to the location in the filesystem you will save the code. Then clone the repository.</p>
+
+<p><code class="language-plaintext highlighter-rouge">$ git clone git@github.com:[your_repository].git</code></p>
+
+<p>You may need to configure permissions on the EC2 Ubuntu filesystem to allow the <code class="language-plaintext highlighter-rouge">git clone</code> command to be run in the root files (e.g. <code class="language-plaintext highlighter-rouge">/opt</code>, <code class="language-plaintext highlighter-rouge">/var</code>).</p>
+
+<p>To enable running <code class="language-plaintext highlighter-rouge">git clone</code> in a custom directory <code class="language-plaintext highlighter-rouge">/opt/servers/</code></p>
+
+<div class="spacer-sm"></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ # make the directory
+$ sudo mkdir /opt/servers
+$
+$ # Change ownership of the directory to the root user and the sudo group
+$ sudo chown -R root:sudo /opt/servers
+$
+$ # Set read, write, and execute permissions for the ownership user and group
+$ sudo chmod -R 775 /opt/servers
+</code></pre></div></div>
+
+<div class="spacer-sm"></div>
+
+<p>Change the above example to reference the users and filesystems specific to your project.</p>
+
+<p>You should now be able to run</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ # no sudo
+$ git clone git@github.com:[your_repository].git
+</code></pre></div></div>
+
+<p>Follow the README for any project specific set up such as proper handling of environment variables. For example, the README in the <a href="https://github.com/iamalexbrady/jobs">example repository</a> states to run an <code class="language-plaintext highlighter-rouge">install.sh</code> script.</p>
+
+<div class="spacer"></div>
+
+<h2 id="6-start-the-docker-container">6. Start the Docker container</h2>
+
+<p><code class="language-plaintext highlighter-rouge">sudo docker-compose up -d</code></p>
+
+<p>When the container has started, you will be able to see it running with <code class="language-plaintext highlighter-rouge">docker ps</code>,
+and use any of the provided functionality of the <code class="language-plaintext highlighter-rouge">docker</code> and <code class="language-plaintext highlighter-rouge">docker-compose</code> CLI utilities.</p>
+
+<div class="spacer"></div>
+
+<hr />
+
+<h3 id="resources">Resources</h3>
+
+<p>Clone a repository using SSH: <a href="https://www.toolsqa.com/git/clone-repository-using-ssh/">https://www.toolsqa.com/git/clone-repository-using-ssh/</a></p>
+
+<p>Permissions in the <code class="language-plaintext highlighter-rouge">/opt</code> directory: <a href="https://askubuntu.com/questions/642744/read-write-permissions-in-opt-directory">https://askubuntu.com/questions/642744/read-write-permissions-in-opt-directory</a></p>
+
+<p><code class="language-plaintext highlighter-rouge">docker-compose</code> command line reference: <a href="https://docs.docker.com/compose/reference/">https://docs.docker.com/compose/reference/</a></p>
+
+
+<div class="page-section row">
+  <div class="sign-off" style="text-align:center;">
+  	<a href="https://twitter.com/popdemtech" target="_blank">
+	    <img src="/assets/img/alexa_popdemtech.jpg" width="100px" class="alexa-img" />
+    	<p>Ping me on Twitter if you found this helpful!</p>
+    	<h3 class="tagline">- @popdemtech</h3>
+	</a>
+  </div>
+</div>
+
+<div class="page-section row">
+	<div class="text-center">
+		<a href="/blog">< Back to Tech Blog</a>
+	</div>
+</div>
+
+<style>
+.heading-row {
+  display:  flex;
+  justify-content: center;
+}
+
+.page-heading {
+  margin-right: 20px;
+}
+
+.tagline {
+  font-size:  1rem;
+}
+
+.sign-off .alexa-img {
+  margin-bottom: 20px;
+}
+
+.sign-off p {
+	margin-bottom: 0;
+}
+
+/* for post content */
+
+.spacer { height: 50px; }
+.spacer-sm { height: 30px; }
+
+h2, h3 { margin-bottom: 30px; }
+</style>
+    </div>
+</div>
+
+		<!-- Footer -->
+<footer class="footer" id="footer" style="background-color:white;">
+  <div class="container">
+    <!-- Social Media -->
+    <div class="row mb-4">
+      <ul class="list-inline social-buttons">
+        
+        <li class="list-inline-item">
+          
+          <a href="https://www.linkedin.com/company/74125575">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+          
+        </li>
+        
+        <li class="list-inline-item">
+          
+          <a href="https://twitter.com/popdemtech">
+            <i class="fab fa-twitter"></i>
+          </a>
+          
+        </li>
+        
+        <li class="list-inline-item">
+          
+          <a href="https://github.com/popdemtech">
+            <i class="fab fa-github"></i>
+          </a>
+          
+        </li>
+        
+        <li class="list-inline-item">
+          
+          <a href="https://medium.com/@PopularDemand">
+            <i class="fab fa-medium"></i>
+          </a>
+          
+        </li>
+        
+        <li class="list-inline-item">
+          
+          <a href="https://alexbrady.org">
+            <i class="fab"></i>
+          </a>
+          
+        </li>
+        
+      </ul>
+    </div>
+
+    <div class="row mb-4 align-items-center justify-content-center">
+      <div class="col">
+        <span class="copyright">Copyright &copy;  2022</span>
+      </div>
+
+      <!-- Legal -->
+      <div class="col">
+        <ul class="list-inline quicklinks">
+          <li class="list-inline-item">
+            <a href="/legal">Privacy Policy</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
+
+  <!-- End Footer -->
+
+		<!-- Bootstrap core JavaScript -->
+		<script src="/assets/js/jquery.min.js"></script>
+		<script src="/assets/js/bootstrap.bundle.min.js"></script>
+
+		<!-- Plugin JavaScript -->
+		<script src="/assets/js/jquery.easing.min.js"></script>
+
+		<!-- Contact form JavaScript -->
+		<script src="/assets/js/jqBootstrapValidation.js"></script>
+		<script src="/assets/js/contact_me.js"></script>
+
+		<!-- Custom scripts for this template -->
+		<script src="/assets/js/agency.min.js"></script>
+		<script src="/assets/js/custom.js"></script>
+
+	</body>
+</html>

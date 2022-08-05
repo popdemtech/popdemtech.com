@@ -1,0 +1,42 @@
+---
+---
+@charset "utf-8";
+// Core variables and mixins
+@import "base/variables.scss";
+@import "base/mixins.scss";
+
+// Custom colors
+$primary: {{ site.data.style.primary | default: "#fed136" }} !default;
+$secondary: {{ site.data.style.secondary | default: "white" }} !default;
+$white: {{ site.data.style.white | default: "#fff" }} !default;
+$black: {{ site.data.style.black | default: "#000" }} !default;
+
+// Custom Images
+$header-image: "{{ site.data.style.header-image }}";
+$contact-image: "{{ site.data.style.contact-image }}";
+
+// Global CSS
+@import "base/global.scss";
+@import "base/page.scss";
+@import "base/home.scss";
+@import "base/utilities.scss";
+@import "base/resume.scss";
+
+// Components
+@import "components/buttons.scss";
+@import "components/navbar.scss";
+@import "components/client-scroll.scss";
+
+// Includes
+@import "includes/masthead.scss";
+@import "includes/services.scss";
+@import "includes/portfolio.scss";
+@import "includes/timeline.scss";
+@import "includes/team.scss";
+@import "includes/contact.scss";
+@import "includes/footer.scss";
+@import "includes/calls_to_action.scss";
+@import "includes/service_categories.scss";
+@import "includes/portfolio_cards.scss";
+@import "includes/designs.scss";
+@import "includes/contact_modal.scss";

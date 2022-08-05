@@ -1,0 +1,48 @@
+.service-list {
+	.service-name {
+		font-size: calc(1.4rem + .6vw);
+	}
+
+	.service-additional {
+		font-size: .8em;
+		font-style: italic;
+	}
+
+	.service-image-price {
+		// background-image: set in html;
+		background-size: cover;
+		position: relative;
+
+		.overlay {
+			background-color: rgba(0,0,0, .6);
+		    position: absolute;
+		    top: 0;
+		    left: 0;
+		    width: 100%;
+		    height: 100%;
+		}
+
+		.spacer, .overlay {
+			padding: 10px;
+		}
+
+		.service-price {
+			font-size: 1.5em;
+			font-weight: bold;
+			@include heading_font();
+		}
+
+		.price-range-label {
+			color: white;
+			font-size: 1.25em;
+		}
+	}
+}
+
+@media(min-width:767px) {
+  .service-list {
+  	.service-included {
+  		margin-bottom: 0px;
+  	}
+  }
+}

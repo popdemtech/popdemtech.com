@@ -1,0 +1,132 @@
+---
+layout: default
+---
+
+{% assign header_pretext = site.data.sitetext.header.pretext %}
+{% assign header_title = site.data.sitetext.header.title %}
+{% assign header_subtext = site.data.sitetext.header.subtext %}
+{% assign header_button = site.data.sitetext.header.button %}
+{% assign header_button_link = site.data.sitetext.header.buttonlink %}
+{% assign social_links = site.data.sitetext.header.social_links %}
+{% assign header_quote = site.data.sitetext.header.quote %}
+
+<div class="home">
+    {% include masthead.html
+        pretext=header_pretext
+        title=header_title
+        subtext=header_subtext
+        button_text=header_button
+        button_link=header_button_link
+        social_links=social_links
+        quote=header_quote
+    %}
+
+    <div class="page-section" id="alexbrady">
+        <div class="container">
+            <div class="row">
+                <div class="col col-md-6 description-col mb-4">
+                    <h2 class="section-heading">alexbrady organization</h2>
+                    <p>alexbrady provides high-quality spirtual content centered around the teachings of <i>A Course in Miracles.</i></p>
+
+                    <table class="service-table text-center table mb-4">
+                        <tr>
+                            <td>Videos</td>
+                            <td>Web tools</td>
+                        </tr>
+                        <tr>
+                            <td>Support</td>
+                            <td>Live chat</td>
+                        </tr>
+                    </table>
+
+                    <p>alexbrady organization is voiced by social media personality, alex brady. Follow <a href="https://iamalexbrady.com/#ab-sees" target="_blank">@iamalexbrady</a> at your favorite social media site!</p>
+                </div>
+                <div class="col col-md-4 offset-md-1 text-center">
+                    <img src="/assets/img/abo_iaab_combo.png" alt="two eyes alex brady symbol" class="mb-4 w-75">
+                    <a href="https://alexbrady.org" class="btn btn-block section-cta mb-2" target="_blank">alexbrady.org ⇗</a>
+                    <a href="https://iamalexbrady.com" class="btn btn-block section-cta secondary-btn" target="_blank">⇖ iamalexbrady.com</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-section" id="lovespresents" style="">
+        <div class="container">
+            <div class="row">
+                <div class="col col-md-6 description-col mb-4">
+                    <h2 class="section-heading">LovesPresents.com</h2>
+                    <p class="text-large">Keep Love Around with the consumer products brand sure to keep a smile on your face.</p>
+                    <p class="">LovesPresents.com is an apparel and home decor e-commerce shop built on the Shopify platform. Check it out!</p>
+                </div>
+                <div class="col col-md-4 offset-md-1 text-center">
+                    <img src="/assets/img/two_loves_presents_icon_content.png" alt="two loves presents" class="mb-4 w-50">
+                    <br>
+                    <a href="https://lovespresents.com" class="btn btn-block section-cta" target="_blank">LovesPresents.com ⇗</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- <div class="page-section" id="highground">
+        <div class="container">
+            <div class="row flex-wrap-reverse justify-content-between">
+
+                <div class="col col-md-4 offset-md-1 text-center">
+                    <img src="/assets/img/gray_combomark_vertical_no_padding.png" alt="two loves presents" class="mb-4 w-75">
+                    <br>
+                    <a href="https://highground.tech" class="btn btn-block section-cta" target="_blank">HighGround.tech ⇗</a>
+                </div>
+
+                <div class="col col-md-6 mb-4 mb-md-0 description-col">
+                    <h2 class="section-heading">HighGround.tech</h2>
+                    <p class="text-large">HighGround.tech is small business technology firm. Technology services to take your business to the next level.</p>
+                    <table class="service-table text-center table mb-4">
+                        <tr>
+                            <td>Networking</td>
+                            <td>Brand development</td>
+                        </tr>
+                        <tr>
+                            <td>Web software</td>
+                            <td>Digital business services</td>
+                        </tr>
+                    </table>
+                    <p class="highground-slogan text-center">HighGround: It's the meta</p>
+                </div>
+
+            </div>
+        </div>
+    </div> -->
+
+    
+
+    <!-- <div class="page-section" id="open-source" style="">
+        <div class="container">
+            <div class="row">
+                <div class="col col-12">
+                    <h2 class="section-heading">Open-Source</h2>
+                </div>
+                <div class="col col-md-6">
+                    <p class="text-large">Community and open-source involvement</p>
+
+                    <span><b><a href="https://github.com/opendenton/denton_data">Open Denton Data:</a></b> ETL and API for Open Denton &mdash; the city of Denton, TX open data initiative</span><br>
+                    <span><b><a href="https://github.com/PopularDemand/webdev101">Women Who Code DFW:</a></b> Volunteer coding coordinator and teacher</span><br>
+                    <span><b><a href="https://github.com/iamalexbrady">alexbrady open-source:</a></b> Open-source materials provided in support of alexbrady.</span>
+                </div>
+                <div class="col col-md-4 offset-md-1 text-center">
+                    <img src="/assets/img/alexa_open_denton_2x1.jpeg" alt="alexa at open denton" class="mb-4 w-100">
+                    <br>
+                    <a href="/contact" class="btn btn-block section-cta mb-2">Contact</a>
+                    <a href="/contact" class="btn btn-block section-cta secondary-btn">View Resume</a>
+                </div>
+            </div>
+        </div>
+    </div> -->
+    
+    {% comment %}{% include calls_to_action.html %}{% endcomment %}
+    {% comment %}{% include service_category_cards.html %}{% endcomment %}
+    {% comment %}{% include timeline.html %}{% endcomment %}
+    {% comment %}{% include team.html %}{% endcomment %}
+    {% comment %}{% include clients.html %}{% endcomment %}
+    {%comment%} {% include contact.html %}{% endcomment %}
+</div>

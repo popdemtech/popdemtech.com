@@ -1,0 +1,14 @@
+- title: "Tech Blog"
+  url: "/blog"
+
+# - title: "Brands"
+#   dropdown: true
+#   dropdown_links:
+#     - title: "LovesPresents.com"
+#       section: "lovespresents"
+#     - title: "alexbrady"
+#       section: "alexbrady"
+
+- title: "Contact"
+  url: "/contact"
+  visible_small_screen: true

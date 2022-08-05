@@ -1,0 +1,17 @@
+.calls-to-action {
+    .cta-btn {
+        height: 80px;
+        font-size: 1.5em;
+        transition: all .5s;
+
+        &:not(:last-child) {
+            margin-bottom: 10px;
+        }
+
+        &:active,
+        &:focus,
+        &:hover {
+            font-size: 1.6em;
+        }
+    }
+}

@@ -1,0 +1,125 @@
+---
+permalink: /designs/
+layout: page_with_masthead
+external_id: designs
+main_content_class: designs
+---
+<!-- Assign Variables -->
+{% assign category = site.data.designs | where: "external_id", "designs" | first %}
+{% assign header_title = category.header.title %}
+{% assign functional_designs = site.data.designs | where: "external_id", "functional_designs" | first %}
+{% assign aesthetic_designs = site.data.designs | where: "external_id", "aesthetic_designs" | first %}
+{% assign functional_designs_page = site.pages | where: "external_id", "functional_designs" | first %}
+{% assign functional_portfolio_page = site.pages | where: "external_id", "functional_portfolio" | first %}
+{% assign aesthetic_designs_page = site.pages | where: "external_id", "aesthetic_designs" | first %}
+{% assign aesthetic_portfolio_page = site.pages | where: "external_id", "aesthetic_portfolio" | first %}
+{% comment %}
+{% assign header_text = site.data.functional_designs.site_text.header.text %}
+{% assign header_subtext = site.data.functional_designs.site_text.header.subtext %}
+{% assign header_button = site.data.functional_designs.site_text.header.button %}
+{% assign header_button_link = site.data.functional_designs.site_text.header.button_link %}
+{% endcomment %}
+
+<!-- Rendered content -->
+{% include contact_modal.html %}
+
+{% include masthead.html
+  title=header_title
+  text=header_text
+  subtext=header_subtext
+  button_text=header_button
+  button_link=header_button_link
+%}
+
+{% include contact_modal.html %}
+
+<main>
+
+  <!-- Page Headering -->
+  <div class="page-section">
+    <div class="container">
+      <div class="row">
+          <p>We offer several design packages perfect for all business, entrepreneurial, and creative endeavors. Our pricing is geared toward getting the small-town entrepreneur up and running with a brand identity. That's great news for big city folk &ndash; these prices at this quality can't be beat.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Functional Designs -->
+  <div class="page-section">
+    <div class="container">
+
+      <!-- Section Heading -->
+      <div class="row section-heading-row mb-4">
+        <div class="col">
+          <div class="heading-bar">
+            <h2 class="section-heading" id="functional-designs">{{ functional_designs.header.title }}</h2>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section Description and Image -->
+      <div class="row mb-4 flex-wrap-reverse">
+        <div class="col-12 col-md-8">
+          <div>{{ functional_designs.description }}</div>
+          <div>{{ functional_designs.why }}</div>
+        </div>
+
+        <div class="col-12 col-md-4 mb-4 text-center">
+          <img class="img-fluid"src="{{ functional_designs.image.src }}" alt="{{ functional_designs.image.alt }}">
+        </div>
+      </div>
+
+      <div class="row flex-direction-column justify-content-center align-items-center">
+        <a class="cta-btn btn btn-tertiary w-75 w-sm-100 p-3 mb-2" href="{{ functional_designs_page.permalink }}">
+          View Business Services
+        </a>
+        <a href="{{ functional_portfolio_page.url }}" class="text-center">See examples</a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Aesthetic Designs -->
+  <div class="page-section">
+    <div class="container">
+      <!-- Section Heading -->
+      <div class="row section-heading-row mb-4">
+        <div class="col">
+          <div class="heading-bar">
+            <h2 class="section-heading" id="functional-designs">{{ aesthetic_designs.header.title }}</h2>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section Description and Image -->
+      <div class="row flex-wrap-reverse">
+        <div class="col-12 col-md-8">
+          <div>{{ aesthetic_designs.description }}</div>
+          <div>{{ aesthetic_designs.why }}</div>
+        </div>
+
+        <div class="col-12 col-md-4 mb-4 text-center">
+          <img class="img-fluid"src="{{ aesthetic_designs.image.src }}" alt="{{ aesthetic_designs.image.alt }}">
+        </div>
+      </div>
+
+      <div class="row justify-content-center">
+        <a class="cta-btn btn btn-tertiary w-75 w-sm-100 p-3 mb-2" href="{{ aesthetic_designs_page.permalink }}">
+          View Aesthetics
+        </a>
+        <a href="{{ aesthetic_portfolio_page.url }}" class="text-center">See examples</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- foot notes -->
+  <div class="page-section">
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <p class="footnote"><i>* - If our incredibly low prices still seem out of budget, <a data-bs-toggle="modal" data-bs-target="#contact-modal" href="#">contact us.</a> We will help guide you to the right designer. Same high-quality guaranteed. Don't let anything hold you back building your dream.</i></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

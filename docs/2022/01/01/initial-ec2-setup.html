@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-T32N526KPS"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+	
+	gtag('config', 'G-T32N526KPS');
+  </script>
+  <!-- End Google Analytics -->
+
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Popular Demand Technology Website">
+  <meta name="author" content="ALEXBRADY">
+  <link rel="canonical" href="https://popdemtech.com/2022/01/01/initial-ec2-setup.html">
+  <link rel="icon" type="image/png" href="/assets/img/favicon.png"/>
+
+  <title>Setting up an AWS EC2 Server | POPDEMTECH</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="/assets/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom fonts for this template -->
+  <link href="/assets/css/all.min.css" rel="stylesheet" type="text/css">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+
+  <!-- Custom styles for this theme -->
+  <!--<link href="assets/css/agency.min.css" rel="stylesheet">-->
+  <link href="/assets/css/agency.css" rel="stylesheet">
+  
+</head>
+
+	<body id="page-top">
+    	<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+  <div class="container">
+    <div class="inner-container d-flex flex-wrap justify-content-between align-items-center w-100">
+      <div class="d-flex align-items-flex-start">
+        <a class="navbar-brand js-scroll-trigger" href="/#">POPDEMTECH</a>
+      </div>
+
+      <div class="right d-flex align-items-center d-lg-none">
+        
+        <ul class="navbar-nav text-uppercase">
+          
+            <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/contact">Contact</a></li>
+          
+        </ul>
+
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+      
+      <div class="collapse navbar-collapse justify-content-end" id="navbarResponsive">
+        <ul class="navbar-nav text-uppercase ml-auto">
+          <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/blog">Tech Blog</a></li><li class="nav-item"><a class="nav-link js-scroll-trigger" href="/contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>
+<!-- End Navigation -->
+
+		
+
+<div class="standard-page ">
+    <div class="container">
+        <div class="page-section row">
+  <div class="heading-row">
+    <div class="page-heading">
+      <h1>Tech Blog</h1>
+      <h3 class="tagline">by Popular Demand</h3>
+    </div>
+
+    <img src="/assets/img/alexa_popdemtech.jpg" width="100px" class="alexa-img" />
+  </div>
+</div>
+
+<h1>Setting up an AWS EC2 Server</h1>
+<p>Before a developer can set up a web application on an EC2 instance or similar remote server, there must first be a remote server running that the developer can log into and install software on.</p>
+
+<p>This is a solution walkthrough of taking an AWS EC2 instance from launch to having a non-default Unix user created. This walkthrough is a prerequisite for setting up web applications suing technologies such as Rails or Docker on an EC2 instance (or similar remote server.)</p>
+
+<!--more-->
+
+<p>This solution will work for a local linux system (ubuntu, windows subsystem linux), and may require modifications for MacOS.</p>
+
+<p>Windows users, instructions for installing WSL can be found <a href="https://docs.microsoft.com/en-us/windows/wsl/install">here.</a></p>
+
+<div class="spacer"></div>
+
+<h2 id="step-1--launch-ec2-instance">Step 1 — Launch EC2 instance</h2>
+<ol>
+  <li>From the AWS EC2 console click launch new instance</li>
+  <li>For this tutorial, select ubuntu.</li>
+  <li>Select whatever specs you know you need. (Free tier is fine)</li>
+  <li>When it asks if you want to download the security key, download it. Name it whatever you want; this solution will refer to it as your-pem-name.pem.</li>
+  <li>Wait for the server to be initialized. Watch the EC2 instances dashboard until the state is Running.</li>
+</ol>
+
+<div class="spacer"></div>
+
+<h2 id="step-2--logging-in-as-root">Step 2 — Logging in as root</h2>
+<p>On your local system, move the downloaded your-pem-name.pem file to a secure location. path_to/your-pem-name.pem to secure location</p>
+
+<p><code class="language-plaintext highlighter-rouge">$ cp path_to/your-pem-name.pem ~/.ssh</code></p>
+
+<p>ensure pem is not accessible to other users</p>
+
+<p><code class="language-plaintext highlighter-rouge">$ chmod 600 ~/.ssh/your-pem-name.pem</code></p>
+
+<div class="spacer-sm"></div>
+
+<p>If you do not ensure the pem is not accessible to other users, you will see an error like this:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@         WARNING: UNPROTECTED PRIVATE KEY FILE!          @
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+Permissions 0644 for '/home/alexa/.ssh/wsl-ec2-ab1.pem' are too open.
+It is required that your private key files are NOT accessible by others.
+This private key will be ignored.
+Load key "/home/alexa/.ssh/wsl-ec2-ab1.pem": bad permissions
+ubuntu@18.209.211.46: Permission denied (publickey).
+</code></pre></div></div>
+
+<div class="spacer-sm"></div>
+
+<p>You should now be able to log into your remote instance’s default user account.</p>
+
+<p><code class="language-plaintext highlighter-rouge">$ ssh -i /path/to/your-pem-name.pem ubuntu@ec2-public-ip</code></p>
+
+<p>The default user for an EC2 instance running Ubuntu is <code class="language-plaintext highlighter-rouge">ubuntu</code>. If you did not select ubuntu as your server operating system, you may be able to find the correct default user at <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/managing-users.html">these AWS docs.</a></p>
+
+<p>The <code class="language-plaintext highlighter-rouge">ec2-public-ip</code> address can be found within the instances information on the AWS EC2 console.</p>
+
+<p style="text-align:center">
+	<img src="/assets/img/posts/public_ipv4.gif" style="width:50%;min-width:320px;" />
+</p>
+
+<div class="spacer"></div>
+
+<h2 id="step-3--create-a-user-account">Step 3 — Create a user account</h2>
+
+<p>Use the adduser command to create the user account and add it to the system.
+The command creates an entry /etc/passwd, a group, and a home directory for the account.</p>
+
+<p>In this solution, the user account is named <code class="language-plaintext highlighter-rouge">newuser</code>.</p>
+
+<p><code class="language-plaintext highlighter-rouge">$ sudo adduser newuser --disabled-password</code></p>
+
+<p>If you did not use Ubuntu, you may not need <code class="language-plaintext highlighter-rouge">--disabled-password</code> flag.</p>
+
+<div class="spacer"></div>
+
+<h2 id="step-4--set-up-user-ssh">Step 4 — Set up user ssh</h2>
+<p><strong>1.</strong> Print public key of the your-pem-name.pem file downloaded when the instance was launched. On your local terminal run:</p>
+
+<p><code class="language-plaintext highlighter-rouge">$ ssh-keygen -y -f /path_to/your-pem-name.pem</code></p>
+
+<p>You will need the result of this command at later steps.</p>
+
+<p><strong>2.</strong> On the remote server, switch from the default account to the new user account.</p>
+
+<p><code class="language-plaintext highlighter-rouge">$ sudo su - newuser</code></p>
+
+<p><strong>3.</strong> Create .ssh directory and authorized_keys file if they do not exist</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ mkdir .ssh
+$ chmod 700 .ssh
+$ touch .ssh/authorized_keys
+$ chmod 600 .ssh/authorized_keys
+</code></pre></div></div>
+
+<p>Important:
+Without these exact file permissions (the exact <code class="language-plaintext highlighter-rouge">chmod</code> commands) the new user will not be able to log in.</p>
+
+<p><strong>4.</strong> Add the public key printed in step 4.1 to the <code class="language-plaintext highlighter-rouge">authorized_keys</code> file</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ nano .ssh/authorized_keys
+[paste public key printed in step 1 and save]
+</code></pre></div></div>
+
+<p><strong>5.</strong> The user should now be able to log into the newuser account on the remote instance, using the private key that corresponds to the public key that you added to the authorized_keys file.</p>
+
+<p>From the local computer, run the following command to log into the new user account:</p>
+
+<p><code class="language-plaintext highlighter-rouge">$ ssh -i /path_to/your-pem-name.pem newuser@ec2-public-ip</code></p>
+
+<div class="spacer-sm"></div>
+
+<p><strong>Tip &amp; Trick:</strong><br />
+To not have to type <code class="language-plaintext highlighter-rouge">-i /path_to/your-pem-name.pem</code> every time, use the ssh-add command to add the private key to the authentication agent. The key will then automatically be checked when ssh authentication is invoked.</p>
+
+<p>Running the <code class="language-plaintext highlighter-rouge">ssh-add</code> command from the terminal will store a key in your SSH agent until you log out (one session only):</p>
+
+<p><strong>local computer</strong><br />
+<code class="language-plaintext highlighter-rouge">$ ssh-add ~/path_to/my-pem-name.pem</code></p>
+
+<p>Alternatively, add command to <code class="language-plaintext highlighter-rouge">~/.bashrc</code> or similar (.bash_profile, .zshrc) to have the <code class="language-plaintext highlighter-rouge">ssh-add</code> command invoked automatically when you open a terminal. This makes it so that you do not have to manually run <code class="language-plaintext highlighter-rouge">ssh-add</code> everytime you log in.</p>
+
+<p><strong>local computer .bashrc or similar</strong><br />
+Non-WSL users, add the following:</p>
+
+<p><code class="language-plaintext highlighter-rouge">ssh-add ~/keyfile.pem &gt;/dev/null 2&gt;&amp;1</code></p>
+
+<p>Windows WSL Users, should add the following instead to the WSL distro’s .bashrc (or similar):</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[ -x /usr/bin/ssh-agent ] &amp;&amp; eval "$(ssh-agent -s)"
+ssh-add ~/path_to/youre-pem-name.pem &gt;/dev/null 2&gt;&amp;1
+</code></pre></div></div>
+
+<p>Make sure to redirect output to <code class="language-plaintext highlighter-rouge">/dev/null</code> to silence the command, or you’ll see “Identity Added” every time you open the terminal.</p>
+
+<p>For Windows WSL users, see this StackOverflow post for an error like <a href="https://stackoverflow.com/questions/48518694/ssh-agent-reset-in-windows-subsystem-for-linux-wsl">“Could not open a connection to your authentication agent.”</a></p>
+
+<div class="spacer"></div>
+
+<h2 id="step-5--granting-admin-privileges-optional">Step 5 — Granting admin privileges (optional)</h2>
+<p>Many actions on the remote server will require elevated privileges to invoke. To avoid having to log out of our normal user and log in
+as the root account to perform these actions, we can set up what is known as superuser or root privileges for the new account.</p>
+
+<p>This will allow our normal user to run commands with administrative privileges
+by putting the word <code class="language-plaintext highlighter-rouge">sudo</code> before the command.
+To add these privileges to our new user, we need to add the user to the sudo group. By default, on Ubuntu 20.04, users who are members of the sudo group are allowed to use the sudo command.</p>
+
+<p>As a user with sudo privileges, likely the <code class="language-plaintext highlighter-rouge">ubuntu</code> or EC2 default user, run the following:</p>
+
+<p><code class="language-plaintext highlighter-rouge">$ sudo usermod -aG sudo newuser</code></p>
+
+<div class="spacer"></div>
+
+<h2 id="step-6--setting-up-basic-firewall">Step 6 — Setting up basic firewall</h2>
+<p><code class="language-plaintext highlighter-rouge">ufw</code> is Uncomplicated Firewall. See the Digital Ocean Setup Guide in the Resources section for more on <code class="language-plaintext highlighter-rouge">ufw</code>.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ ufw app list
+$ ufw allow OpenSSH
+$ ufw enable
+$ ufw status
+</code></pre></div></div>
+
+<p>You will have to enable more ports as you add more services and applications that can accept web traffic. See <a href="https://help.ubuntu.com/community/UFW"><code class="language-plaintext highlighter-rouge">ufw</code> documentation</a> when you get to that step.</p>
+
+<div class="spacer"></div>
+
+<h2 id="step-7-optional--password-authentication">Step 7 (optional) — Password Authentication</h2>
+<p>If you will be logging in to the remote server from multiple devices, consider password authentication. This is less secure than ssh.</p>
+
+<p>1. Allow password authentication on the server:</p>
+
+<p><a href="https://phoenixnap.com/kb/ssh-permission-denied-publickey#ftoc-heading-3">https://phoenixnap.com/kb/ssh-permission-denied-publickey</a></p>
+
+<p>2. Create a password for a user:</p>
+
+<p><code class="language-plaintext highlighter-rouge">$ sudo passwd [username]</code></p>
+
+<div class="spacer"></div>
+
+<hr />
+
+<h3 id="resources">Resources:</h3>
+
+<p>EC2 managing users guide: <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/managing-users.html">https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/managing-users.html</a></p>
+
+<p>Digital ocean initial setup guide: <a href="https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-20-04">https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-20-04</a></p>
+
+<p>Add pem to ssh keychain: <a href="https://www.cloudsavvyit.com/1795/how-to-add-your-ec2-pem-file-to-your-ssh-keychain/">https://www.cloudsavvyit.com/1795/how-to-add-your-ec2-pem-file-to-your-ssh-keychain/</a></p>
+
+<p>Creating password for a user: <a href="https://www.cyberciti.biz/faq/change-a-user-password-in-ubuntu-linux-using-passwd/">https://www.cyberciti.biz/faq/change-a-user-password-in-ubuntu-linux-using-passwd/</a></p>
+
+
+<div class="page-section row">
+  <div class="sign-off" style="text-align:center;">
+  	<a href="https://twitter.com/popdemtech" target="_blank">
+	    <img src="/assets/img/alexa_popdemtech.jpg" width="100px" class="alexa-img" />
+    	<p>Ping me on Twitter if you found this helpful!</p>
+    	<h3 class="tagline">- @popdemtech</h3>
+	</a>
+  </div>
+</div>
+
+<div class="page-section row">
+	<div class="text-center">
+		<a href="/blog">< Back to Tech Blog</a>
+	</div>
+</div>
+
+<style>
+.heading-row {
+  display:  flex;
+  justify-content: center;
+}
+
+.page-heading {
+  margin-right: 20px;
+}
+
+.tagline {
+  font-size:  1rem;
+}
+
+.sign-off .alexa-img {
+  margin-bottom: 20px;
+}
+
+.sign-off p {
+	margin-bottom: 0;
+}
+
+/* for post content */
+
+.spacer { height: 50px; }
+.spacer-sm { height: 30px; }
+
+h2, h3 { margin-bottom: 30px; }
+</style>
+    </div>
+</div>
+
+		<!-- Footer -->
+<footer class="footer" id="footer" style="background-color:white;">
+  <div class="container">
+    <!-- Social Media -->
+    <div class="row mb-4">
+      <ul class="list-inline social-buttons">
+        
+        <li class="list-inline-item">
+          
+          <a href="https://www.linkedin.com/company/74125575">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+          
+        </li>
+        
+        <li class="list-inline-item">
+          
+          <a href="https://twitter.com/popdemtech">
+            <i class="fab fa-twitter"></i>
+          </a>
+          
+        </li>
+        
+        <li class="list-inline-item">
+          
+          <a href="https://github.com/popdemtech">
+            <i class="fab fa-github"></i>
+          </a>
+          
+        </li>
+        
+        <li class="list-inline-item">
+          
+          <a href="https://medium.com/@PopularDemand">
+            <i class="fab fa-medium"></i>
+          </a>
+          
+        </li>
+        
+        <li class="list-inline-item">
+          
+          <a href="https://alexbrady.org">
+            <i class="fab"></i>
+          </a>
+          
+        </li>
+        
+      </ul>
+    </div>
+
+    <div class="row mb-4 align-items-center justify-content-center">
+      <div class="col">
+        <span class="copyright">Copyright &copy;  2022</span>
+      </div>
+
+      <!-- Legal -->
+      <div class="col">
+        <ul class="list-inline quicklinks">
+          <li class="list-inline-item">
+            <a href="/legal">Privacy Policy</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
+
+  <!-- End Footer -->
+
+		<!-- Bootstrap core JavaScript -->
+		<script src="/assets/js/jquery.min.js"></script>
+		<script src="/assets/js/bootstrap.bundle.min.js"></script>
+
+		<!-- Plugin JavaScript -->
+		<script src="/assets/js/jquery.easing.min.js"></script>
+
+		<!-- Contact form JavaScript -->
+		<script src="/assets/js/jqBootstrapValidation.js"></script>
+		<script src="/assets/js/contact_me.js"></script>
+
+		<!-- Custom scripts for this template -->
+		<script src="/assets/js/agency.min.js"></script>
+		<script src="/assets/js/custom.js"></script>
+
+	</body>
+</html>

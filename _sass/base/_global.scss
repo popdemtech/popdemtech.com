@@ -1,0 +1,119 @@
+// Global styling for this template
+body {
+  overflow-x: hidden;
+  @include body-font;
+  // padding-top: $approx-header-height-desktop;
+
+  @media only screen and (max-width: 991px) {
+    padding-top: 73px;
+  }
+
+  @media only screen and (min-width: 992px) {
+    padding-top: $approx-header-height-mobile;
+  }
+}
+
+// Element styles
+p {
+  line-height: 1.75;
+  margin-bottom: 1.5em;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+a {
+  color: $primary;
+  text-decoration: underline;
+  &:hover {
+    color: darken($primary, 10%);
+  }
+}
+
+a.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+button, .btn {
+  border-radius: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 700;
+  @include heading-font;
+}
+
+// Global Classes
+.text-primary {
+  color: $primary !important;
+}
+
+.text-small {
+  font-size: .9em;
+}
+
+.text-large {
+  font-size: 1.1em;
+}
+
+.splash-color {
+  color: $secondary;
+}
+
+.footnote {
+  font-size: .8em;
+}
+
+
+.pdf-iframe {
+  width: 100%;
+}
+
+// Bootstrap Overrides
+.container {
+  max-width: 960px !important;
+}
+
+.navbar-brand {
+  font-size: 1.25em;
+  padding:0;
+}
+
+.nav-link {
+  font-size: .9em !important;
+
+  @media(min-width:576px) {
+    font-size: 1.25em;
+  }
+}
+
+.modal {
+    padding-right: 0px !important;
+}
+
+// Highlight color customization
+::-moz-selection {
+  background: $secondary;
+  text-shadow: none;
+}
+
+::selection {
+  background: $secondary;
+  text-shadow: none;
+}
+
+img::selection {
+  background: transparent;
+}
+
+img::-moz-selection {
+  background: transparent;
+}

@@ -1,0 +1,69 @@
+---
+permalink: /blog
+layout: page
+external_id: blog
+class_name: blog-page
+---
+
+<div class="page-section row">
+  <div class="heading-row text-center d-flex align-items-center">
+    <div class="page-heading">
+      <h1>Tech Blog</h1>
+      <h3 class="tagline">by Popular Demand</h3>
+    </div>
+    <img src="/assets/img/popular-demand-button.png" width="100px" />
+  </div>
+</div>
+
+<div class="page-section row">
+  <ul>
+    {% for post in site.posts %}
+      <li class="post" style="list-style:none;">
+        <a href="{{ post.url }}" class="post-title">{{ post.title }}</a>
+        <div class="post-excerpt">
+          {{ post.excerpt }}
+        </div>
+      </li>
+
+
+    {% endfor %}
+  </ul>
+</div>
+
+<div class="page-section row text-center" >
+  <a href="https://lovespresents.com" target="_blank">
+    <img src="/assets/img/posts/keep_love_around_3x1_love.png" style="width:50%;min-width:320px;" />
+  </a>
+</div>
+
+<style>
+.heading-row {
+  display:  flex;
+  justify-content: center;
+}
+
+.page-heading {
+  margin-right: 20px;
+}
+
+.tagline {
+  font-size:  1rem;
+}
+
+.post:not(:last-of-type) {
+  margin-bottom: 40px;
+}
+
+.post-title {
+  font-weight:bold;
+  font-size: 1.3em;
+}
+
+.post-excerpt {
+  font-size: .9em;
+}
+
+.post-excerpt p {
+  margin: 0;
+}
+</style>

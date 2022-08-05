@@ -1,0 +1,44 @@
+<header class="masthead">
+    <div class="container">
+        <div class="row">
+            <div class="col intro-text d-flex flex-column justify-content-center align-items-center text-center">
+                <img src="/assets/img/popular-demand-button.png" alt="alexa anderson headshot" class="w-50" />
+                <div>
+                    {%- if include.pretext -%}
+                    <div class="intro-lead-in">{{ include.pretext | markdownify }}</div>
+                    {%- endif -%}
+                    {%- if include.title -%}
+                    <div class="intro-heading">{{ include.title | markdownify }}</div>
+                    {%- endif -%}
+
+                    {%- if include.subtext -%}
+                    <div class="intro-lead-out">{{ include.subtext | markdownify }}</div>
+                    {%- endif -%}
+
+                    {% if include.social_links %}
+                    <div class="social-links">
+                        {% for link in include.social_links %}
+                        <a href="{{ link.href }}" class="social-link" target="_blank">
+                            <i class="fab {{ link.class }}"></i>
+                        </a>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+
+                    {%- if button_text -%}
+                    <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="{{ include.button_link }}">{{ include.button_text }}</a>
+                    {%- endif -%}
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col d-flex justify-content-center intro-quote">
+                {%- if include.quote -%}
+                <div class="intro-quote">{{ include.quote | markdownify }}</div>
+                {%- endif -%}
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- End Header --->

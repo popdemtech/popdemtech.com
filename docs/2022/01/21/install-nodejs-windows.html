@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-T32N526KPS"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+	
+	gtag('config', 'G-T32N526KPS');
+  </script>
+  <!-- End Google Analytics -->
+
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Popular Demand Technology Website">
+  <meta name="author" content="ALEXBRADY">
+  <link rel="canonical" href="https://popdemtech.com/2022/01/21/install-nodejs-windows.html">
+  <link rel="icon" type="image/png" href="/assets/img/favicon.png"/>
+
+  <title>Install NodeJS on Windows | POPDEMTECH</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="/assets/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom fonts for this template -->
+  <link href="/assets/css/all.min.css" rel="stylesheet" type="text/css">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+
+  <!-- Custom styles for this theme -->
+  <!--<link href="assets/css/agency.min.css" rel="stylesheet">-->
+  <link href="/assets/css/agency.css" rel="stylesheet">
+  
+</head>
+
+	<body id="page-top">
+    	<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+  <div class="container">
+    <div class="inner-container d-flex flex-wrap justify-content-between align-items-center w-100">
+      <div class="d-flex align-items-flex-start">
+        <a class="navbar-brand js-scroll-trigger" href="/#">POPDEMTECH</a>
+      </div>
+
+      <div class="right d-flex align-items-center d-lg-none">
+        
+        <ul class="navbar-nav text-uppercase">
+          
+            <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/contact">Contact</a></li>
+          
+        </ul>
+
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+      
+      <div class="collapse navbar-collapse justify-content-end" id="navbarResponsive">
+        <ul class="navbar-nav text-uppercase ml-auto">
+          <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/blog">Tech Blog</a></li><li class="nav-item"><a class="nav-link js-scroll-trigger" href="/contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>
+<!-- End Navigation -->
+
+		
+
+<div class="standard-page ">
+    <div class="container">
+        <div class="page-section row">
+  <div class="heading-row">
+    <div class="page-heading">
+      <h1>Tech Blog</h1>
+      <h3 class="tagline">by Popular Demand</h3>
+    </div>
+
+    <img src="/assets/img/alexa_popdemtech.jpg" width="100px" class="alexa-img" />
+  </div>
+</div>
+
+<h1>Install NodeJS on Windows</h1>
+<p>So you want to develop NodeJS on Windows. It’s a simple process. Follow these steps:</p>
+
+<!--more-->
+
+<h3 id="1-navigate-to-nodejsorg">1. Navigate to nodejs.org</h3>
+
+<p style="text-align:center">
+	<img src="/assets/img/posts/install-nodejs-windows/walkthrough_0.png" style="width:50%;min-width:320px;" />
+</p>
+
+<p>Navigate to <a href="https://nodejs.org">nodejs.org</a> and select the version of node you want to download. Even number versions have Long-Term Support (LTS).</p>
+
+<p>Long-term support “typically guarantees that critical bugs will be fixed for a total of 30 months.” Production applications should use LTS versions. Use a more recent odd number version to test out latest features.</p>
+
+<p>Read more about node’s release schedule in the Resources.</p>
+
+<div class="spacer"></div>
+
+<h3 id="2-setup-wizard">2. Setup Wizard</h3>
+
+<p style="text-align:center">
+	<img src="/assets/img/posts/install-nodejs-windows/walkthrough_1.png" style="width:50%;min-width:320px;" />
+</p>
+
+<p>Once the installer finishes downloading, open the downloaded file to open the installation wizard.</p>
+
+<div class="spacer"></div>
+
+<h3 id="3-accept-terms">3. Accept Terms</h3>
+
+<p style="text-align:center">
+	<img src="/assets/img/posts/install-nodejs-windows/walkthrough_2.png" style="width:50%;min-width:320px;" />
+</p>
+
+<p>Accept the terms of the License Agreement if you agree.</p>
+
+<div class="spacer"></div>
+
+<h3 id="4-select-the-installation-directory">4. Select the Installation Directory</h3>
+
+<p style="text-align:center">
+	<img src="/assets/img/posts/install-nodejs-windows/walkthrough_3.png" style="width:50%;min-width:320px;" />
+</p>
+
+<p>The default location, <code class="language-plaintext highlighter-rouge">C:\Program Files\nodejs\</code>, is fine. If you install in a non-default location, ensure the directory is located within your command-line’s <code class="language-plaintext highlighter-rouge">$PATH</code> variable.</p>
+
+<div class="spacer"></div>
+
+<h3 id="5-customize-features">5. Customize Features</h3>
+
+<p style="text-align:center">
+	<img src="/assets/img/posts/install-nodejs-windows/walkthrough_4.png" style="width:50%;min-width:320px;" />
+</p>
+
+<p>Click next unless you are certain you want something different. I have never customized this step.</p>
+
+<div class="spacer"></div>
+
+<h3 id="6-install-tools-for-native-modules">6. Install Tools for Native Modules</h3>
+
+<p>You will need a few software tools to be installed in addition to NodeJS in order to compile certain JavaScript/C++ npm modules. NPM modules are 3rd party libraries that can be used to extend the functionality of your application.</p>
+
+<p>If you decide not to install the tools, they can be installed later.</p>
+
+<p style="text-align:center">
+	<img src="/assets/img/posts/install-nodejs-windows/walkthrough_5.png" style="width:50%;min-width:320px;" />
+</p>
+
+<p>I checked the box because I know I want the tools.</p>
+
+<div class="spacer"></div>
+
+<h3 id="7-install">7. Install</h3>
+
+<p style="text-align:center">
+	<img src="/assets/img/posts/install-nodejs-windows/walkthrough_6.png" style="width:50%;min-width:320px;" />
+</p>
+
+<p>Install.</p>
+
+<div class="spacer"></div>
+
+<h3 id="8-watch-the-progress-bar">8. Watch the Progress Bar</h3>
+
+<p style="text-align:center">
+	<img src="/assets/img/posts/install-nodejs-windows/walkthrough_7.png" style="width:50%;min-width:320px;" />
+</p>
+
+<p style="text-align:center">
+	<img src="/assets/img/posts/install-nodejs-windows/installing_node_js.gif" style="width:50%;min-width:320px;" />
+</p>
+
+<p>Or not. The installation took me ~3 minutes total.</p>
+
+<div class="spacer"></div>
+
+<h3 id="9-allow-nodejs-to-make-changes-to-the-device">9. Allow Node.js to make changes to the device</h3>
+
+<p style="text-align:center">
+	<img src="/assets/img/posts/install-nodejs-windows/walkthrough_8.png" style="width:50%;min-width:320px;" />
+</p>
+
+<div class="spacer"></div>
+
+<h3 id="10-after-installation-install-native-module-tools">10. After installation, Install Native Module Tools</h3>
+
+<p style="text-align:center">
+	<img src="/assets/img/posts/install-nodejs-windows/walkthrough_9.png" style="width:50%;min-width:320px;" />
+</p>
+
+<p>If you selected “Automatically install the necessary tools” in <strong>Step 6</strong>, after the node’s install is finished, a window will appear with some information about the libraries that are about to be installed. Continue through the prompts.</p>
+
+<div class="spacer"></div>
+
+<h3 id="11-finish-tools-install-in-powershell">11. Finish Tools’ Install in Powershell</h3>
+
+<p style="text-align:center">
+	<img src="/assets/img/posts/install-nodejs-windows/walkthrough_10.png" style="width:50%;min-width:320px;" />
+</p>
+
+<p>The process will open a Powershell window with Administrator rights, and finish the installation in Powershell. Allow Powershell to make changes to the device.</p>
+
+<div class="spacer"></div>
+
+<h3 id="12-wait-for-and-debug-tools-install">12. Wait for and Debug Tools Install</h3>
+
+<p>The install process takes longer than the NodeJS install. The installer recommends closing <em>all</em> programs other than the installer during the install process.</p>
+
+<p>I did not do that, and did not find the performance of my PC affected during install. However, the install did fail the first time…</p>
+
+<div class="spacer"></div>
+
+<h3 id="12a-repair-native-modules-install">12a. Repair Native Modules Install</h3>
+
+<p>The install failed for me near the end, but luckily the fix is easy.</p>
+
+<p>The fix that worked for me was this: Reactivate the NodeJS installer download, and select the ‘Repair’ option. See Repair Node Installation in the Resources for details. See the resource as well if you have an installation failure not fixed by this solution:</p>
+
+<p>Find the downloaded file from <strong>Step 1</strong>, and select it.</p>
+
+<p style="text-align:center">
+	<img src="/assets/img/posts/install-nodejs-windows/walkthrough_11.png" style="width:50%;min-width:320px;" />
+</p>
+
+<p>Select next, then select ‘Repair.’</p>
+
+<p style="text-align:center">
+	<img src="/assets/img/posts/install-nodejs-windows/walkthrough_12.png" style="width:50%;min-width:320px;" />
+</p>
+
+<p style="text-align:center">
+	<img src="/assets/img/posts/install-nodejs-windows/walkthrough_13.png" style="width:50%;min-width:320px;" />
+</p>
+
+<p style="text-align:center">
+	<img src="/assets/img/posts/install-nodejs-windows/walkthrough_14.png" style="width:50%;min-width:320px;" />
+</p>
+
+<p style="text-align:center">
+	<img src="/assets/img/posts/install-nodejs-windows/walkthrough_15.png" style="width:50%;min-width:320px;" />
+</p>
+
+<div class="spacer"></div>
+
+<h3 id="13-check-installation">13. Check Installation</h3>
+
+<p>You should now have Node and NPM install. If you installed the native modules, you will have those as well. From Windows Terminal (or similar), run the following commands and check the output:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt; node -v
+v16.13.2
+
+&gt; npm -v
+v8.2.1
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">node -v</code> checks the version of node, <code class="language-plaintext highlighter-rouge">npm -v</code> checks the version of npm, node package manager.</p>
+
+<p>If you installed native modules, run the following to check the version of the installed libraries:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt; choco list -lo
+
+Chocolatey v0.10.15
+chocolatey 0.10.15
+...long list...
+visualstudio-installer 2.0.2
+visualstudio2019-workload-vctools 1.0.1
+visualstudio2019buildtools 16.11.9.0
+21 packages installed.
+</code></pre></div></div>
+
+<p>In particular, check for the existance of visualstudio-installer, visualstudio2019-workload-vctools, and visualstudio2019buildtools libraries.</p>
+
+<div class="spacer"></div>
+
+<h3 id="resources">Resources</h3>
+
+<p>Node JS Release Schedule and Information - <a href="https://nodejs.org/en/about/releases/">nodejs.org/en/about/releases</a></p>
+
+<p>Manage PATH System Variable on Windows - <a href="https://docs.oracle.com/en/database/oracle/machine-learning/oml4r/1.5.1/oread/creating-and-modifying-environment-variables-on-windows.html#GUID-DD6F9982-60D5-48F6-8270-A27EC53807D0">docs.oracle.com</a></p>
+
+<p>Install Tools for Native Modules - <a href="https://github.com/nodejs/node-gyp#on-windows">github.com/nodejs/node-gyp#on-windows</a></p>
+
+<p>Repair Node Installation - <a href="https://stackoverflow.com/a/68912225">stackoverflow.com/a/68912225</a></p>
+
+
+<div class="page-section row">
+  <div class="sign-off" style="text-align:center;">
+  	<a href="https://twitter.com/popdemtech" target="_blank">
+	    <img src="/assets/img/alexa_popdemtech.jpg" width="100px" class="alexa-img" />
+    	<p>Ping me on Twitter if you found this helpful!</p>
+    	<h3 class="tagline">- @popdemtech</h3>
+	</a>
+  </div>
+</div>
+
+<div class="page-section row">
+	<div class="text-center">
+		<a href="/blog">< Back to Tech Blog</a>
+	</div>
+</div>
+
+<style>
+.heading-row {
+  display:  flex;
+  justify-content: center;
+}
+
+.page-heading {
+  margin-right: 20px;
+}
+
+.tagline {
+  font-size:  1rem;
+}
+
+.sign-off .alexa-img {
+  margin-bottom: 20px;
+}
+
+.sign-off p {
+	margin-bottom: 0;
+}
+
+/* for post content */
+
+.spacer { height: 50px; }
+.spacer-sm { height: 30px; }
+
+h2, h3 { margin-bottom: 30px; }
+</style>
+    </div>
+</div>
+
+		<!-- Footer -->
+<footer class="footer" id="footer" style="background-color:white;">
+  <div class="container">
+    <!-- Social Media -->
+    <div class="row mb-4">
+      <ul class="list-inline social-buttons">
+        
+        <li class="list-inline-item">
+          
+          <a href="https://www.linkedin.com/company/74125575">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+          
+        </li>
+        
+        <li class="list-inline-item">
+          
+          <a href="https://twitter.com/popdemtech">
+            <i class="fab fa-twitter"></i>
+          </a>
+          
+        </li>
+        
+        <li class="list-inline-item">
+          
+          <a href="https://github.com/popdemtech">
+            <i class="fab fa-github"></i>
+          </a>
+          
+        </li>
+        
+        <li class="list-inline-item">
+          
+          <a href="https://medium.com/@PopularDemand">
+            <i class="fab fa-medium"></i>
+          </a>
+          
+        </li>
+        
+        <li class="list-inline-item">
+          
+          <a href="https://alexbrady.org">
+            <i class="fab"></i>
+          </a>
+          
+        </li>
+        
+      </ul>
+    </div>
+
+    <div class="row mb-4 align-items-center justify-content-center">
+      <div class="col">
+        <span class="copyright">Copyright &copy;  2022</span>
+      </div>
+
+      <!-- Legal -->
+      <div class="col">
+        <ul class="list-inline quicklinks">
+          <li class="list-inline-item">
+            <a href="/legal">Privacy Policy</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
+
+  <!-- End Footer -->
+
+		<!-- Bootstrap core JavaScript -->
+		<script src="/assets/js/jquery.min.js"></script>
+		<script src="/assets/js/bootstrap.bundle.min.js"></script>
+
+		<!-- Plugin JavaScript -->
+		<script src="/assets/js/jquery.easing.min.js"></script>
+
+		<!-- Contact form JavaScript -->
+		<script src="/assets/js/jqBootstrapValidation.js"></script>
+		<script src="/assets/js/contact_me.js"></script>
+
+		<!-- Custom scripts for this template -->
+		<script src="/assets/js/agency.min.js"></script>
+		<script src="/assets/js/custom.js"></script>
+
+	</body>
+</html>

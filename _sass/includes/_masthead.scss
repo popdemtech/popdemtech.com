@@ -1,0 +1,98 @@
+// Styling for the masthead
+header.masthead {
+  background-color: black;
+
+  @media(min-width:992px) {
+    padding-top: 25px;
+  }
+
+  .intro-text {
+    padding-top: 25px;;
+    padding-bottom: 25px;
+    text-shadow: 0px 0px 2px $primary;
+    
+    .intro-lead-in {
+      font-size: 24px;
+      color: white;
+      line-height: 22px;
+      @include script-font;
+
+      @media(min-width:992px) {
+        font-size: 42px;
+      }
+
+      p { margin-bottom: 0; }
+    }
+
+    .intro-heading {
+      font-size: 20px;
+      font-weight: 700;
+      line-height: 30px;
+      color: white;
+      text-shadow: 0px 0px 2px $primary;
+      @include heading-font;
+
+      @media(min-width:992px) {
+        font-size: 24px;
+      }
+      
+      p { margin-bottom: 0; }
+    }
+
+    .intro-lead-out {
+      font-size: 22px;
+      font-weight: bold;
+      line-height: 22px;
+      letter-spacing: .5px;
+      color: $white;
+
+      @media(min-width:992px) {
+        font-size: 42px;
+      }
+
+      @include heading-font;
+    }
+
+    .social-links {
+      .social-link {
+        color: white;
+        text-decoration: none !important;
+        font-size: 1.3em;
+        margin: 0 10px;
+
+        @media(min-width:992px) {
+          font-size: 32px;
+        }
+      }
+    }
+  }
+
+  .intro-quote {
+    color: white;
+    margin-bottom: 15px;
+  }
+}
+
+// @media(min-width:992px) {
+//   header.masthead {
+    
+//     .intro-text {
+//       padding-top: 300px;
+//       padding-bottom: 200px;
+      
+//       .intro-lead-in {
+//         font-size: 40px;
+//         line-height: 40px;
+//         margin-bottom: 25px;
+//         @include script-font;
+//       }
+//       .intro-heading {
+//         font-size: 75px;
+//         font-weight: 700;
+//         line-height: 75px;
+//         margin-bottom: 50px;
+//         @include heading-font;
+//       }
+//     }
+//   }
+// }
