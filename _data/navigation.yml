@@ -1,13 +1,11 @@
 - title: "Tech Blog"
   url: "/blog"
 
-# - title: "Brands"
-#   dropdown: true
-#   dropdown_links:
-#     - title: "LovesPresents.com"
-#       section: "lovespresents"
-#     - title: "alexbrady"
-#       section: "alexbrady"
+- title: "Tools"
+  dropdown: true
+  dropdown_links:
+    - url: "/tools/make-invoice"
+      title: "Make Invoice"
 
 - title: "Contact"
   url: "/contact"
