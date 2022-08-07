@@ -183,9 +183,15 @@ th, td {
           Rate: <input type="text" name="rate" /><br>
           Amount: <input type="text" name="amount" /><br>
         </div>
-        <br><br>
       </div>
     </div>
+
+    <br>
+
+    <b>Balance Amount</b><br>
+      Balance Amount: <input type="text" name="balance-amount">
+    
+    <br><br>
     <button id="update-pdf">Update PDF</button> When you have filled in the desired fields above, click "Update PDF" for a preview of the PDF in the window below.
   </form>
   <button onclick="generatePDF()">Print PDF</button> When you are satisfied with the PDF, click "Print PDF" to download a copy.
@@ -253,7 +259,7 @@ th, td {
                 <td></td>
                 <td></td>
                 <td class="balance-due"><b>Balance Due</b></td>
-                <td class="balance-amount"><span class="replace">$880.00</span></td>
+                <td class="balance-amount" data-pdf-field="balance-amount"><span class="replace">$880.00</span></td>
               </tr>
             </tfoot>
           </table>
@@ -280,7 +286,8 @@ th, td {
     "company-address": "www.popdemtech.com",
     "bill-to-name": "Alex Brady",
     "bill-to-contact": "iamalexbrady@gmail.com",
-    "memo": "Thank you for your business! :)"
+    "memo": "Thank you for your business! :)",
+    "balance-amount": "$1200.00"
   };
 
   const DEFAULT_LINE_ITEM = {
@@ -343,6 +350,10 @@ th, td {
         lineItemRow.appendChild(tableData);
       });
 
+      // Handle balance inputs
+    const input = document.querySelector('[name="balance-amount"]');
+    replacePDFField(input);
+
       document.querySelector('#line-items-table tbody').appendChild(lineItemRow);
     });
   }
@@ -371,9 +382,7 @@ th, td {
 
   function fillInitialForm() {
     Object.keys(DEFAULT_VALUES).forEach((name) => {
-        const pdfField = document.querySelector(`[data-pdf-field=${name}]`);
         const inputField = document.querySelector(`[name=${name}]`);
-
         inputField.value = DEFAULT_VALUES[name];
     });
 
