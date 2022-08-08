@@ -1,0 +1,62 @@
+---
+permalink: /games/snake
+layout: page
+external_id: snake
+class_name: snake-game
+header_scripts:
+  - src: https://code.jquery.com/jquery-2.2.3.min.js
+  - src: /assets/js/games/snake/model.js
+    type: text/javascript
+  - src: /assets/js/games/snake/view.js
+    type: text/javascript
+  - src: /assets/js/games/snake/controller.js
+    type: text/javascript
+  - src: /assets/js/games/snake/index.js
+    type: text/javascript
+---
+
+<div class="page-section">
+  <h1 id="title">Sssnake</h1>
+</div>
+
+<div class="page-section">
+  <div id="board">
+    <div id="board-info">
+      <h1 id="main-info">Welcome to Snake!</h1>
+      <p class='extra-info'>Use the arrow keys to navigate.</p>
+      <button id="play-button">Play Snake!</button>
+    </div>
+  </div>
+</div>
+
+<style>
+  #board {
+    position: relative;
+    display: inline-block;
+    height: 500px;
+    width: 700px;
+    border: 2px solid black;
+  }
+
+  #board-info {
+    width: 250px;
+    text-align: center;
+    margin: 125px auto;
+    position: relative;
+  }
+
+  .boardBlock {
+    position: absolute;
+    display: inline-block;
+    height: 50px;
+    width: 50px;
+  }
+
+  .snake {
+    background-color: #4DD007;
+  }
+
+  .food {
+    background-color: #A8612B;
+  }
+</style>

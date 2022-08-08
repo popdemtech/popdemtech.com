@@ -16,15 +16,27 @@
 
 
 
+  
+    <script src="https://code.jquery.com/jquery-2.2.3.min.js" type=""></script> 
+  
+    <script src="/assets/js/games/snake/model.js" type="text/javascript"></script> 
+  
+    <script src="/assets/js/games/snake/view.js" type="text/javascript"></script> 
+  
+    <script src="/assets/js/games/snake/controller.js" type="text/javascript"></script> 
+  
+    <script src="/assets/js/games/snake/index.js" type="text/javascript"></script> 
+  
+
 
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="Popular Demand Technology Website">
   <meta name="author" content="ALEXBRADY">
-  <link rel="canonical" href="https://popdemtech.com/2022/03/03/how-to-create-content.html">
+  <link rel="canonical" href="https://popdemtech.com/games/snake">
   <link rel="icon" type="image/png" href="/assets/img/favicon.png"/>
 
-  <title>How to Create Content | POPDEMTECH</title>
+  <title>POPDEMTECH</title>
 
   <!-- Bootstrap core CSS -->
   <link href="/assets/css/bootstrap.min.css" rel="stylesheet">
@@ -94,143 +106,52 @@
 
 		
 
-<div class="standard-page ">
+<div class="standard-page snake-game">
     <div class="container">
-        <div class="page-section row">
-  <div class="heading-row">
-    <div class="page-heading">
-      <h1>Tech Blog</h1>
-      <h3 class="tagline">by Popular Demand</h3>
+        <div class="page-section">
+  <h1 id="title">Sssnake</h1>
+</div>
+
+<div class="page-section">
+  <div id="board">
+    <div id="board-info">
+      <h1 id="main-info">Welcome to Snake!</h1>
+      <p class='extra-info'>Use the arrow keys to navigate.</p>
+      <button id="play-button">Play Snake!</button>
     </div>
-
-    <img src="/assets/img/alexa_popdemtech.jpg" width="100px" class="alexa-img" />
   </div>
-</div>
-
-<h1>How to Create Content</h1>
-<p>Record something happening.</p>
-
-<p>Things you’ll need:</p>
-
-<ul>
-  <li>A Recording device</li>
-  <li>Something happening</li>
-</ul>
-
-<!--more-->
-
-<div class="spacer"></div>
-
-<h3 id="1-prepare-the-recording-devices">1. Prepare the recording devices.</h3>
-
-<p>There are different types of recording that can be made.
-I’ll list a few methods of recording content:</p>
-
-<p><strong>Text:</strong> Notepad, Word processor, Twitter<br />
-<strong>Video:</strong> Camera, OBS (Open Broadcasting Software), Twitch<br />
-<strong>Graphics:</strong> Inkscape, Canva, Whiteboard</p>
-
-<p>Setup for content creation by opening the program, adjusting the lighting,
-and/or making sure your writing tool has ink.</p>
-
-<div class="spacer"></div>
-
-<h3 id="2-start-doing-what-you-were-already-going-to-be-doing">2. Start doing what you were already going to be doing.</h3>
-
-<p>There’s no need to aggressively adjust your habits in anyway.</p>
-
-<p>You will be setting up recording devices more than you have in the past, of course.
-Content creation will only really flow if you are passionate with the activity you are recording.</p>
-
-<p>How do you already spend your time? Just add a notepad, screenrecorder, or camera,
-and you have yourself content created.</p>
-
-<div class="spacer"></div>
-
-<p style="text-align:center">
-  <a href="https://lovespresents.com/collections/apparel/products/site-reached-beanie" target="_blank" title="lovespresents.com site reached hat">
-	<img src="/assets/img/posts/site_reached_banner.png" style="width:50%;min-width:320px;" />
-  </a>
-</p>
-
-<div class="spacer"></div>
-
-<h3 id="3-record-your-time-spent-doing-the-activity">3. Record your time spent doing the activity.</h3>
-
-<p>Two methods of recording are stream of thought and commentary.</p>
-
-<p>In stream of thought recording, you record your stream of thought as you are doing the activity.
-This method of recording is often seen in game walkthroughs, time-lapse art creation, and live body-work.</p>
-
-<p>In commentary recording, you are talking about the concept or activity to the audience.
-This can include cooking tutorials, unboxing / consumer reviews, and written walkthroughs.</p>
-
-<div class="spacer"></div>
-
-<p style="text-align:center;">
-	<iframe width="560" height="315" src="https://www.youtube.com/embed/lFCh2laBOGw" title="content creation youtube video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
-</p>
-
-<div class="spacer"></div>
-
-<h3 id="4-optional-publish-the-content">4. (Optional) Publish the content.</h3>
-
-<p>Select an area of the world to be your “production” environment.
-This will likely be a publically accessible physical location or website.
-Examples include personal websites, social media accounts, and storefronts.</p>
-
-<p>Publish the created content to these locations.</p>
-
-<p>Professional publishing platforms include:
-Medium.com, Youtube.com, Linkedin.com, a personal website such as on Wordpress,
-Etsy shop, physical store, Amazon.com, Ebay.com, Garage Sale (actually hold a garage sale),
-Soundcloud, Anchor.fm, Spotify, Newspaper, Editorial, Church group, and many more.</p>
-
-
-<div class="page-section row">
-  <div class="sign-off" style="text-align:center;">
-  	<a href="https://twitter.com/popdemtech" target="_blank">
-	    <img src="/assets/img/alexa_popdemtech.jpg" width="100px" class="alexa-img" />
-    	<p>Ping me on Twitter if you found this helpful!</p>
-    	<h3 class="tagline">- @popdemtech</h3>
-	</a>
-  </div>
-</div>
-
-<div class="page-section row">
-	<div class="text-center">
-		<a href="/blog">< Back to Tech Blog</a>
-	</div>
 </div>
 
 <style>
-.heading-row {
-  display:  flex;
-  justify-content: center;
-}
+  #board {
+    position: relative;
+    display: inline-block;
+    height: 500px;
+    width: 700px;
+    border: 2px solid black;
+  }
 
-.page-heading {
-  margin-right: 20px;
-}
+  #board-info {
+    width: 250px;
+    text-align: center;
+    margin: 125px auto;
+    position: relative;
+  }
 
-.tagline {
-  font-size:  1rem;
-}
+  .boardBlock {
+    position: absolute;
+    display: inline-block;
+    height: 50px;
+    width: 50px;
+  }
 
-.sign-off .alexa-img {
-  margin-bottom: 20px;
-}
+  .snake {
+    background-color: #4DD007;
+  }
 
-.sign-off p {
-	margin-bottom: 0;
-}
-
-/* for post content */
-
-.spacer { height: 50px; }
-.spacer-sm { height: 30px; }
-
-h2, h3 { margin-bottom: 30px; }
+  .food {
+    background-color: #A8612B;
+  }
 </style>
     </div>
 </div>
@@ -301,6 +222,19 @@ h2, h3 { margin-bottom: 30px; }
     </div>
   </div>
 </footer>
+
+<script>
+// fixPageShort();
+function fixPageShort() {
+  if(window.innerHeight > document.body.offsetHeight) {
+    document.getElementById("footer").style.position="fixed";
+    document.getElementById("footer").style.bottom=0;
+    document.getElementById("footer").style.right=0;
+    document.getElementById("footer").style.left=0;
+    document.getElementById("footer").style.width="100%";
+  }
+}
+</script>
 
   <!-- End Footer -->
 

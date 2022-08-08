@@ -12,6 +12,8 @@
 - title: "Games"
   dropdown: true
   dropdown_links:
+    - url: "/games/snake"
+      title: "Sssnake"
     - url: "/games/box-jump"
       title: "Box Jump"
     - url: "/games/falling-blocks"
