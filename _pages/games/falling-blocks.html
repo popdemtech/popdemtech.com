@@ -1,0 +1,111 @@
+---
+permalink: /games/falling-blocks
+layout: page
+external_id: falling-blocks
+class_name: falling-blocks
+header_scripts:
+  - src: https://code.jquery.com/jquery-2.2.3.min.js
+  - src: /assets/js/games/falling-blocks/block.js
+    type: text/javascript
+  - src: /assets/js/games/falling-blocks/piece.js
+    type: text/javascript
+  - src: /assets/js/games/falling-blocks/board.js
+    type: text/javascript
+  - src: /assets/js/games/falling-blocks/model.js
+    type: text/javascript
+  - src: /assets/js/games/falling-blocks/view.js
+    type: text/javascript
+  - src: /assets/js/games/falling-blocks/controller.js
+    type: text/javascript
+---
+<div class="page-section">
+  <h1 id="title">Falling Blocks</h1>
+</div>
+
+<div class="page-section p-relative">
+  <div id="board">
+      <br> 
+  </div>
+  <div id="defeat" display="none"> GAME OVER </div> 
+  <div id="score"></div>
+  <button id="reset-btn">Reset</button>
+</div>
+
+<style>
+  /* HTML5 display-role reset for older browsers */
+  article, aside, details, figcaption, figure,
+  footer, header, hgroup, menu, nav, section {
+    display: block;
+  }
+  body {
+    line-height: 1;
+  }
+  ol, ul {
+    list-style: none;
+  }
+  blockquote, q {
+    quotes: none;
+  }
+  blockquote:before, blockquote:after,
+  q:before, q:after {
+    content: '';
+    content: none;
+  }
+  table {
+    border-collapse: collapse;
+    border-spacing: 0;
+  }
+
+  /*
+  Stuff
+  */
+
+  .p-relative {
+    position: relative;
+  }
+
+  #board{
+    border: 1px solid black;
+    padding: 15px;
+    width: 70%;
+    text-align: center;
+    background-color: gray;
+  }
+
+  .cell{
+    border: 1px solid black;
+    display: inline-block;
+    margin: .5px;
+    height: 15px;
+    width:  15px;
+    background-color: white;
+  }
+
+  .active{
+    background-color: red;
+  }
+
+  .static {
+    background-color: magenta;
+  }
+
+  #defeat {
+    position: absolute;
+    top: 50px;
+    left: 25px;
+    width: 50px;
+    font-size: 36px;
+    font-weight: 600;
+    color: white;
+  }
+
+  #score {
+    position: absolute;
+    top: 225px;
+    left: 45px;
+    width: 50px;
+    font-size: 30px;
+    font-weight: 400;
+    color: black;
+  }
+</style>

@@ -12,6 +12,12 @@
   <!-- End Google Analytics -->
 {% endif %}
 
+{% if include.header_scripts %}
+  {% for script in include.header_scripts %}
+    <script src="{{ script['src'] }}" type="{{ script['type'] }}"></script> 
+  {% endfor %}
+{% endif %}
+
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="{{ site.description }}">
