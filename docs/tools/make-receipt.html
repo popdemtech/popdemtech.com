@@ -68,6 +68,8 @@
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown"><a class="dropdown-item nav-link" href="/tools/make-invoice" target="">
                         Make Invoice
+                      </a><a class="dropdown-item nav-link" href="/tools/make-receipt" target="">
+                        Make Receipt
                       </a></ul>
               </li><li class="nav-item"><a class="nav-link js-scroll-trigger" href="/contact">Contact</a></li>
         </ul>
@@ -154,9 +156,6 @@ th, td {
 <div class="page-section">
 <div>
   <form id="pdf-form">
-    <div data-pdf-field="receipt-invoice-number">Invoice <span class="replace">#0045</span></div>
-            <div data-pdf-field="receipt-amount-paid">Amount Paid: <span class="replace">$1200.00</span></div>
-            <div data-pdf-field="receipt-date-paid">Date Paid: <span class="replace">04/17/2022</span></div>
     <div id="inputs">
       <b>Receipt</b><br/>
       Invoice number: <input type="text" name="receipt-invoice-number" /><br>

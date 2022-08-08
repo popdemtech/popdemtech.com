@@ -6,6 +6,8 @@
   dropdown_links:
     - url: "/tools/make-invoice"
       title: "Make Invoice"
+    - url: "/tools/make-receipt"
+      title: "Make Receipt"
 
 - title: "Contact"
   url: "/contact"
