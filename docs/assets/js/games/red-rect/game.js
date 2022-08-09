@@ -147,6 +147,7 @@ function update() {
 }
 setInterval(update, 20);
 document.addEventListener("keydown", function(event) {
+    event.preventDefault();
   if (event.keyCode == 39) {
     //right arrow
     gameState.rectVelocity.x = gameState.playerSpeed;

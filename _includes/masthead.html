@@ -2,7 +2,9 @@
     <div class="container">
         <div class="row">
             <div class="col intro-text d-flex flex-column justify-content-center align-items-center text-center">
-                <img src="/assets/img/popular-demand-button.png" alt="alexa anderson headshot" class="w-50" />
+                {% if include.masthead_img_src %}
+                    <img src="{{ include.masthead_img_src }}" alt="alexa anderson headshot" class="w-50" />
+                {% endif %}
                 <div>
                     {%- if include.pretext -%}
                     <div class="intro-lead-in">{{ include.pretext | markdownify }}</div>

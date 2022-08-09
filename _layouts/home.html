@@ -9,6 +9,7 @@ layout: default
 {% assign header_button_link = site.data.sitetext.header.buttonlink %}
 {% assign social_links = site.data.sitetext.header.social_links %}
 {% assign header_quote = site.data.sitetext.header.quote %}
+{% assign masthead_img_src = site.data.sitetext.header.masthead_img_src %}
 
 <div class="home">
     {% include masthead.html
@@ -19,9 +20,10 @@ layout: default
         button_link=header_button_link
         social_links=social_links
         quote=header_quote
+        masthead_img_src=masthead_img_src
     %}
 
-    <div class="page-section" id="alexbrady">
+    <!-- <div class="page-section" id="alexbrady">
         <div class="container">
             <div class="row">
                 <div class="col col-md-6 description-col mb-4">
@@ -65,7 +67,7 @@ layout: default
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 
 
     <!-- <div class="page-section" id="highground">
@@ -128,5 +130,5 @@ layout: default
     {% comment %}{% include timeline.html %}{% endcomment %}
     {% comment %}{% include team.html %}{% endcomment %}
     {% comment %}{% include clients.html %}{% endcomment %}
-    {%comment%} {% include contact.html %}{% endcomment %}
+    {% include contact.html %}
 </div>

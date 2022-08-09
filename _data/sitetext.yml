@@ -5,6 +5,7 @@ header:
   button:
   buttonlink:
   quote: Technology by Popular Demand
+  masthead_img_src: /assets/img/popular-demand-button.png
   social_links:
     - class: "fa-github"
       href: "https://github.com/populardemand"
@@ -157,8 +158,8 @@ team:
           icon: fab fa-linkedin-in
           
 contact:
-  title: "Connect"
-  text: "Can we help with your next project?<br>Reach us for commisioning or for access to our Network of Designers."
+  title: "Connect with Popular Demand"
+  text: "Can I help with your next technology project?<br/>Reach out."
   section: contact
     
 footer:
