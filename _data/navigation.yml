@@ -14,10 +14,12 @@
   dropdown_links:
     - url: "/games/snake"
       title: "Sssnake"
-    - url: "/games/box-jump"
-      title: "Box Jump"
     - url: "/games/falling-blocks"
       title: "Falling Blocks"
+    - url: "/games/box-jump"
+      title: "Box Jump"
+    - url: "/games/red-rect"
+      title: "Red Rect"
 
 - title: "Contact"
   url: "/contact"

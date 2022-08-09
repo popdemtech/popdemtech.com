@@ -1,0 +1,46 @@
+---
+permalink: /games/red-rect
+layout: page
+external_id: red-rect
+class_name: red-rect
+---
+<div class="page-section">
+<h1 id="title">Red Rect</h1>
+</div>
+
+<div class="page-section">
+    <div class="game center">
+        <div class="canvas-wrapper">
+            <p id="score"></p>
+            <canvas id="canvas-top"></canvas>
+        </div>
+    </div>
+    <p class="text-small"><i>Inpired by <a href="https://codepen.io/yossigor/pen/MQqZNW">CodePen</a></i></p>
+</div>
+
+
+<style>
+    canvas {
+        width: 100%;
+    }
+    .canvas-wrapper{
+        border-style: solid;
+        border-color: black;
+        width: 100%;
+        padding: 0px;
+    }
+    .center {
+        text-align: center;
+    }
+    .game {
+        position: relative;
+        margin: 0;
+    }
+    #score {
+        position: absolute;
+        top:0px;
+        left:50px;
+    }
+</style>
+
+<script src="/assets/js/games/red-rect/game.js"></script>
