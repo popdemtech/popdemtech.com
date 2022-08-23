@@ -21,10 +21,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="Popular Demand Technology Website">
   <meta name="author" content="ALEXBRADY">
-  <link rel="canonical" href="https://popdemtech.com/blog">
+  <link rel="canonical" href="https://popdemtech.com/2022/08/23/heroku-procfile.html">
   <link rel="icon" type="image/png" href="/assets/img/favicon.png"/>
 
-  <title>POPDEMTECH</title>
+  <title>The Heroku Procfile | POPDEMTECH</title>
 
   <!-- Bootstrap core CSS -->
   <link href="/assets/css/bootstrap.min.css" rel="stylesheet">
@@ -96,150 +96,100 @@
 
 		
 
-<div class="standard-page blog-page">
+<div class="standard-page ">
     <div class="container">
         <div class="page-section row">
-  <div class="heading-row text-center d-flex align-items-center">
+  <div class="heading-row">
     <div class="page-heading">
       <h1>Tech Blog</h1>
       <h3 class="tagline">by Popular Demand</h3>
     </div>
-    <img src="/assets/img/popular-demand-button.png" width="100px" />
+
+    <img src="/assets/img/alexa_popdemtech.jpg" width="100px" class="alexa-img" />
   </div>
 </div>
 
-<div class="page-section row">
-  <ul>
-    
-      <li class="post" style="list-style:none;">
-        <a href="/2022/08/23/heroku-procfile.html" class="post-title">The Heroku Procfile</a>
-        <div class="post-excerpt">
-          <p><code class="language-plaintext highlighter-rouge">Procfile</code> is a file that specifies the commands that are executed
+<h1>The Heroku Procfile</h1>
+<p><code class="language-plaintext highlighter-rouge">Procfile</code> is a file that specifies the commands that are executed
 by an Heroku app on startup. While it is not necessary to include a Procfile
 for Heroku deployment, a Procfile allows for more startup configuration
 and the definition of multiple processes that run separate dynos.</p>
 
+<!--more-->
 
-        </div>
-      </li>
+<div class="spacer-sm"></div>
 
+<h2 id="procfile"><code class="language-plaintext highlighter-rouge">Procfile</code></h2>
 
-    
-      <li class="post" style="list-style:none;">
-        <a href="/2022/03/19/minimalist-bird-wallpaper.html" class="post-title">Minimalist Bird Wallpaper for Desktop and Mobile</a>
-        <div class="post-excerpt">
-          <p>Here are two free background wallpapers for desktop or mobile. Created using Inkscape vector graphic software.</p>
+<p>The Procfile (literally a file titled <code class="language-plaintext highlighter-rouge">Procfile</code>) is located in the root of an application’s file system, and can be used to specify a variety of processes.
+Each Heroku <a href="https://devcenter.heroku.com/articles/dynos">dyno</a> started the app
+belongs to one of the declared process types.</p>
 
+<p>Processes are listed within the Procfile on separate lines:</p>
 
-        </div>
-      </li>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;process type&gt;: &lt;command&gt;
+</code></pre></div></div>
 
+<p>You can refer to an applications config variables in the command using <code class="language-plaintext highlighter-rouge">$</code> syntax.</p>
 
-    
-      <li class="post" style="list-style:none;">
-        <a href="/2022/03/03/how-to-create-content.html" class="post-title">How to Create Content</a>
-        <div class="post-excerpt">
-          <p>Record something happening.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>web: bundle exec rails server -p $PORT
+</code></pre></div></div>
 
-<p>Things you’ll need:</p>
+<div class="spacer-sm"></div>
 
-<ul>
-  <li>A Recording device</li>
-  <li>Something happening</li>
-</ul>
+<h2 id="the-web-process-type">The <code class="language-plaintext highlighter-rouge">web</code> Process Type</h2>
 
+<p>The process type <code class="language-plaintext highlighter-rouge">web</code> is special to Heroku.
+It is the only process type that can receive external HTTP traffic.</p>
 
-        </div>
-      </li>
+<p>Example Procfile with many processes:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>web:           bundle exec rails server
+release:       ./release-tasks.sh
+worker:        env QUEUE=* bundle exec rake resque:work
+deliveryworker:  env QUEUE=delivery bundle exec rake resque:work
+</code></pre></div></div>
 
+<div class="spacer-sm"></div>
 
-    
-      <li class="post" style="list-style:none;">
-        <a href="/2022/03/03/get_ubuntu_version.html" class="post-title">Get Ubuntu Version from Command Line, VirtualBox</a>
-        <div class="post-excerpt">
-          <p>I recently downloaded Ubuntu 20.04.4 LTS.</p>
+<h2 id="scale-the-processes">Scale the Processes</h2>
 
-<p>In order to type that sentence, I needed to get the version of Ubuntu I downloaded.</p>
+<p>Scaling the process implies running the configured number of dynos
+with the specified command. The commandline utility <code class="language-plaintext highlighter-rouge">heroku ps</code> is used for this.</p>
 
+<p>To scale the processes within the given example Procfile:</p>
 
-        </div>
-      </li>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>heroku ps:scale worker=1 urgentworker=3
+</code></pre></div></div>
 
+<div class="spacer-sm"></div>
 
-    
-      <li class="post" style="list-style:none;">
-        <a href="/2022/03/03/copy_from_terminal_ubuntu.html" class="post-title">How to Copy from Terminal, Ubuntu 20.04.4</a>
-        <div class="post-excerpt">
-          <p>If you, like me, have recently installed Ubuntu 20.04 Desktop
-and would like to copy text or output from within terminal
-you may come to wonder why the beloved Ctrl+C does not do its
-beloved trick….It may not copy what is highlighted.</p>
+<h2 id="procfile-and-herokuyml">Procfile and heroku.yml</h2>
 
+<p>The Procfile is not required if a <code class="language-plaintext highlighter-rouge">heroku.yml</code> file is used as the build manifest.
+Read more about the <code class="language-plaintext highlighter-rouge">heroku.yml</code> in the Resources.</p>
 
-        </div>
-      </li>
+<div class="spacer-sm"></div>
 
+<h2 id="resources">Resources</h2>
+<p>Procfile - <a href="https://devcenter.heroku.com/articles/procfile">https://devcenter.heroku.com/articles/procfile</a></p>
 
-    
-      <li class="post" style="list-style:none;">
-        <a href="/2022/01/21/install-nodejs-windows.html" class="post-title">Install NodeJS on Windows</a>
-        <div class="post-excerpt">
-          <p>So you want to develop NodeJS on Windows. It’s a simple process. Follow these steps:</p>
+<p>heroku.yml - <a href="https://devcenter.heroku.com/articles/build-docker-images-heroku-yml">https://devcenter.heroku.com/articles/build-docker-images-heroku-yml</a></p>
 
 
-        </div>
-      </li>
-
-
-    
-      <li class="post" style="list-style:none;">
-        <a href="/2022/01/16/docker-desktop-wsl.html" class="post-title">Setting Up Docker Desktop for Windows and WSL2</a>
-        <div class="post-excerpt">
-          <p>Windows Subsystem Linux provides an intuitive Linux development interface for Windows users.</p>
-
-<p>Unlike the usual Linux Docker installation process where the Docker process is installed and
-runs as a Linux process,
-To develop Docker applications within Windows Subsystem Linux, Docker Desktop must be installed and running within the Windows operating system.</p>
-
-
-        </div>
-      </li>
-
-
-    
-      <li class="post" style="list-style:none;">
-        <a href="/2022/01/08/deploying-docker-ec2.html" class="post-title">Deploying a Docker Container on EC2</a>
-        <div class="post-excerpt">
-          <p>Docker makes it easy to run multiple web applications on one server instance. Because it’s container architecture isolates applications and their dependencies, Docker is the software of choice when considering how to deploy multiple applications, databases, and caches and allow them to share resources without colliding namespaces/3rd party library requirements.</p>
-
-<p>In this solution walkthrough, I deploy a Docker Container onto EC2.</p>
-
-
-        </div>
-      </li>
-
-
-    
-      <li class="post" style="list-style:none;">
-        <a href="/2022/01/01/initial-ec2-setup.html" class="post-title">Setting up an AWS EC2 Server</a>
-        <div class="post-excerpt">
-          <p>Before a developer can set up a web application on an EC2 instance or similar remote server, there must first be a remote server running that the developer can log into and install software on.</p>
-
-<p>This is a solution walkthrough of taking an AWS EC2 instance from launch to having a non-default Unix user created. This walkthrough is a prerequisite for setting up web applications suing technologies such as Rails or Docker on an EC2 instance (or similar remote server.)</p>
-
-
-        </div>
-      </li>
-
-
-    
-  </ul>
+<div class="page-section row">
+  <div class="sign-off" style="text-align:center;">
+  	<a href="https://twitter.com/popdemtech" target="_blank">
+	    <img src="/assets/img/alexa_popdemtech.jpg" width="100px" class="alexa-img" />
+    	<p>Ping me on Twitter if you found this helpful!</p>
+    	<h3 class="tagline">- @popdemtech</h3>
+	</a>
+  </div>
 </div>
 
-<div class="page-section row text-center" >
-  <a href="https://lovespresents.com" target="_blank">
-    <img src="/assets/img/posts/keep_love_around_3x1_love.png" style="width:50%;min-width:320px;" />
-  </a>
+<div class="page-section row">
+	<div class="text-center">
+		<a href="/blog">< Back to Tech Blog</a>
+	</div>
 </div>
 
 <style>
@@ -256,22 +206,20 @@ To develop Docker applications within Windows Subsystem Linux, Docker Desktop mu
   font-size:  1rem;
 }
 
-.post:not(:last-of-type) {
-  margin-bottom: 40px;
+.sign-off .alexa-img {
+  margin-bottom: 20px;
 }
 
-.post-title {
-  font-weight:bold;
-  font-size: 1.3em;
+.sign-off p {
+	margin-bottom: 0;
 }
 
-.post-excerpt {
-  font-size: .9em;
-}
+/* for post content */
 
-.post-excerpt p {
-  margin: 0;
-}
+.spacer { height: 50px; }
+.spacer-sm { height: 30px; }
+
+h2, h3 { margin-bottom: 30px; }
 </style>
     </div>
 </div>
@@ -342,19 +290,6 @@ To develop Docker applications within Windows Subsystem Linux, Docker Desktop mu
     </div>
   </div>
 </footer>
-
-<script>
-// fixPageShort();
-function fixPageShort() {
-  if(window.innerHeight > document.body.offsetHeight) {
-    document.getElementById("footer").style.position="fixed";
-    document.getElementById("footer").style.bottom=0;
-    document.getElementById("footer").style.right=0;
-    document.getElementById("footer").style.left=0;
-    document.getElementById("footer").style.width="100%";
-  }
-}
-</script>
 
   <!-- End Footer -->
 
