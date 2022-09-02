@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-T32N526KPS"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+	
+	gtag('config', 'G-T32N526KPS');
+  </script>
+  <!-- End Google Analytics -->
+
+
+
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Popular Demand Technology Website">
+  <meta name="author" content="ALEXBRADY">
+  <link rel="canonical" href="https://popdemtech.com/2022/09/02/express-error-handling.html">
+  <link rel="icon" type="image/png" href="/assets/img/favicon.png"/>
+
+  <title>Express Error Handling | POPDEMTECH</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="/assets/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom fonts for this template -->
+  <link href="/assets/css/all.min.css" rel="stylesheet" type="text/css">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+
+  <!-- Custom styles for this theme -->
+  <!--<link href="assets/css/agency.min.css" rel="stylesheet">-->
+  <link href="/assets/css/agency.css" rel="stylesheet">
+  
+</head>
+
+	<body id="page-top">
+    	<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+  <div class="container">
+    <div class="inner-container d-flex flex-wrap justify-content-between align-items-center w-100">
+      <div class="d-flex align-items-flex-start">
+        <a class="navbar-brand js-scroll-trigger" href="/#">POPDEMTECH</a>
+      </div>
+
+      <div class="right d-flex align-items-center d-lg-none">
+        
+        <ul class="navbar-nav text-uppercase">
+          
+            <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/contact">Contact</a></li>
+          
+        </ul>
+
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+      
+      <div class="collapse navbar-collapse justify-content-end" id="navbarResponsive">
+        <ul class="navbar-nav text-uppercase ml-auto">
+          <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/products">Products</a></li><li class="nav-item"><a class="nav-link js-scroll-trigger" href="/blog">Tech Blog</a></li><li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Tools
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown"><a class="dropdown-item nav-link" href="/tools/make-invoice" target="">
+                        Make Invoice
+                      </a><a class="dropdown-item nav-link" href="/tools/make-receipt" target="">
+                        Make Receipt
+                      </a></ul>
+              </li><li class="nav-item"><a class="nav-link js-scroll-trigger" href="/contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>
+<!-- End Navigation -->
+
+		
+
+<div class="standard-page ">
+    <div class="container">
+        <div class="page-section row">
+  <div class="heading-row">
+    <div class="page-heading">
+      <h1>Tech Blog</h1>
+      <h3 class="tagline">by Popular Demand</h3>
+    </div>
+
+    <img src="/assets/img/alexa_popdemtech.jpg" width="100px" class="alexa-img" />
+  </div>
+</div>
+
+<h1>Express Error Handling</h1>
+<p>In developing web applications, it is good practice to catch errors and deliver useful information to the end user if something goes awry. Express provides a conventional approach to capturing application errors using its middleware pipeline.</p>
+
+<p><!--more--></p>
+
+<h2 id="express-middleware">Express Middleware</h2>
+
+<p>The Express library comes with a convention for handling application errors – Express’ middleware framework. The middleware framework is a pipeline of functions that have access to the <code class="language-plaintext highlighter-rouge">request</code> and <code class="language-plaintext highlighter-rouge">response</code> objects. A given middleware can execute any code and make changes to the <code class="language-plaintext highlighter-rouge">request</code> and <code class="language-plaintext highlighter-rouge">response</code> objects. When the middleware is done with its computation, it must end the request/response cycle <em>or</em> call the <code class="language-plaintext highlighter-rouge">next</code> middleware function in the pipeline.</p>
+
+<p>In this way, every route that is defined on the app – e.g. <code class="language-plaintext highlighter-rouge">GET /hey-pop</code> – is part of the middleware pipeline. A route which responds with a webpage ends the request/response cycle by not calling a <code class="language-plaintext highlighter-rouge">next</code> middleware. An Express route handler has the following signature:</p>
+
+<div class="filename">pseudocode</div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">routeHandler</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">request</span><span class="p">,</span> <span class="nx">response</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="p">{</span> <span class="p">...</span> <span class="p">};</span>
+<span class="nx">app</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">'</span><span class="s1">/path</span><span class="dl">'</span><span class="p">,</span> <span class="nx">routeHandler</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>A middleware handler has the similar signature:</p>
+
+<div class="filename">pseudocode</div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">middleware</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">request</span><span class="p">,</span> <span class="nx">response</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="p">{</span> <span class="p">...</span> <span class="p">};</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">middlewareHandler</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>Error handling middleware has a slightly differing signature; the first parameter is a JavaScript error object.</p>
+
+<div class="filename">pseudocode</div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">errorHandlingMiddleware</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">request</span><span class="p">,</span> <span class="nx">response</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="p">{</span> <span class="p">...</span> <span class="p">};</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">errorHandlingMiddleware</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>The application automatically enters the error handling middleware if <code class="language-plaintext highlighter-rouge">next</code> is invoked with an error object.</p>
+
+<h2 id="an-error-handling-middleware">An Error Handling Middleware</h2>
+<p>As with all middleware, Express will invoke the functions in the order they are applied to the application with <code class="language-plaintext highlighter-rouge">app.use()</code>, top to bottom. Generally, apply error handling middleware below the more trafficked route and middleware definitions.</p>
+
+<p>Here is an example error handler:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">request</span><span class="p">,</span> <span class="nx">response</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">error</span><span class="p">.</span><span class="nx">apiError</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">next</span><span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">request</span><span class="p">,</span> <span class="nx">response</span><span class="p">,</span> <span class="nx">next</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="nx">response</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="nx">error</span><span class="p">.</span><span class="nx">statusCode</span><span class="p">);</span>
+  <span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">({</span> <span class="na">message</span><span class="p">:</span> <span class="nx">error</span><span class="p">.</span><span class="nx">message</span> <span class="p">});</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<p>Note that the only <em>Express</em> convention is the signature of the route handler.</p>
+
+<p>The additional logic of checking <code class="language-plaintext highlighter-rouge">error.apiError</code> is application logic specific to this use case. The error object is developer-defined, and useful for carrying information from the spot where the error occured to the error handling function. The pattern of checking for a property on the <code class="language-plaintext highlighter-rouge">error</code> object is convention, and allows for passing the request/response to the next middleware if it’s not applicable to the current one.</p>
+
+<p>This code checks for the existance of the a property <code class="language-plaintext highlighter-rouge">apiError</code> on the <code class="language-plaintext highlighter-rouge">error</code>. If it is not present, the function passes the error to the next error handling middleware. If the property is present, the status of the response is set to the <code class="language-plaintext highlighter-rouge">statusCode</code> of the error and a JSON response is returned with the error’s message. Note: <code class="language-plaintext highlighter-rouge">error.statusCode</code> is a non-standard property that is application specific and developer-set.</p>
+
+<p>An important aspect of this code is that it returns a JSON response. Express’ default error handler returns an HTML response. In this application-specific case, <code class="language-plaintext highlighter-rouge">apiError</code> indicates that the initial route requested was an API route. These routes are expected to return JSON, so the error handler is programmed to return JSON.</p>
+
+<h2 id="invoking-the-error-handler">Invoking the Error Handler</h2>
+<p>The error handling middleware pipeline begins by a route or middleware invoking its <code class="language-plaintext highlighter-rouge">next</code> parameter with an Error object. Here is an example API route that passes any error to the middleware pipeline. The error object is modified so that it will be captured in the error handling middleware defined above.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">app</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="dl">'</span><span class="s1">/api/pop</span><span class="dl">'</span><span class="p">,</span> <span class="k">async</span> <span class="kd">function</span><span class="p">(</span><span class="nx">request</span><span class="p">,</span> <span class="nx">response</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">try</span> <span class="p">{</span>
+    <span class="k">await</span> <span class="nx">Pop</span><span class="p">.</span><span class="nx">create</span><span class="p">();</span>
+    <span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">({</span> <span class="na">popped</span><span class="p">:</span> <span class="kc">true</span> <span class="p">});</span>
+  <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">e</span><span class="p">.</span><span class="nx">apiError</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+    <span class="nx">e</span><span class="p">.</span><span class="nx">statusCode</span> <span class="o">=</span> <span class="mi">422</span><span class="p">;</span>
+    <span class="nx">next</span><span class="p">(</span><span class="nx">e</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<p>With the last line – <code class="language-plaintext highlighter-rouge">next(e)</code> – the request/response cycle is moved to the error handling middleware pipeline. The <code class="language-plaintext highlighter-rouge">apiError: true</code> property will cause the previously defined handler to process the response, <code class="language-plaintext highlighter-rouge">res.json</code> the error message.</p>
+
+<h2 id="further">Further</h2>
+
+<p>An full-featured application will have multiple error handling middlewares. Each one will likely begin with a guard clause – e.g. <code class="language-plaintext highlighter-rouge">if(!error.apiError)</code> – which defermines if the error should be processed by the specific middleware.</p>
+
+<p>The middleware may or may not return the response to the user as shown in the examples here. A valid use case for error handing middleware is to produce side-effects such as error-logging to performance monitoring tools and/or triggering background workers. These types of middleware should continue the middleware pipeline by invoking <code class="language-plaintext highlighter-rouge">next(e)</code> with the error object.</p>
+
+<p>Remember the middleware pipeline applies the functions in order of their declaration on the app via <code class="language-plaintext highlighter-rouge">app.use</code>. As such, <code class="language-plaintext highlighter-rouge">use</code> side-effect middlewares before any that return a response.</p>
+
+<h3 id="resources">Resources</h3>
+<p>Express Error Handling: <a href="http://expressjs.com/en/guide/error-handling.html">http://expressjs.com/en/guide/error-handling.html</a></p>
+
+
+<div class="page-section row">
+  <div class="sign-off" style="text-align:center;">
+  	<a href="https://twitter.com/popdemtech" target="_blank">
+	    <img src="/assets/img/alexa_popdemtech.jpg" width="100px" class="alexa-img" />
+    	<p>Ping me on Twitter if you found this helpful!</p>
+    	<h3 class="tagline">- @popdemtech</h3>
+	</a>
+  </div>
+</div>
+
+<div class="page-section row">
+	<div class="text-center">
+		<a href="/blog">< Back to Tech Blog</a>
+	</div>
+</div>
+
+<style>
+.heading-row {
+  display:  flex;
+  justify-content: center;
+}
+
+.page-heading {
+  margin-right: 20px;
+}
+
+.tagline {
+  font-size:  1rem;
+}
+
+.sign-off .alexa-img {
+  margin-bottom: 20px;
+}
+
+.sign-off p {
+	margin-bottom: 0;
+}
+
+/* for post content */
+
+.spacer { height: 50px; }
+.spacer-sm { height: 30px; }
+
+h2, h3 { margin-bottom: 30px; }
+</style>
+    </div>
+</div>
+
+		<!-- Footer -->
+<footer class="footer" id="footer" style="background-color:white;">
+  <div class="container">
+    <!-- Social Media -->
+    <div class="row mb-4">
+      <ul class="list-inline social-buttons">
+        
+        <li class="list-inline-item">
+          
+          <a href="https://www.linkedin.com/company/74125575">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+          
+        </li>
+        
+        <li class="list-inline-item">
+          
+          <a href="https://twitter.com/popdemtech">
+            <i class="fab fa-twitter"></i>
+          </a>
+          
+        </li>
+        
+        <li class="list-inline-item">
+          
+          <a href="https://github.com/popdemtech">
+            <i class="fab fa-github"></i>
+          </a>
+          
+        </li>
+        
+        <li class="list-inline-item">
+          
+          <a href="https://medium.com/@PopularDemand">
+            <i class="fab fa-medium"></i>
+          </a>
+          
+        </li>
+        
+        <li class="list-inline-item">
+          
+          <a href="https://alexbrady.org">
+            <i class="fab"></i>
+          </a>
+          
+        </li>
+        
+      </ul>
+    </div>
+
+    <div class="row mb-4 align-items-center justify-content-center">
+      <div class="col">
+        <span class="copyright">Copyright &copy;  2022</span>
+      </div>
+
+      <!-- Legal -->
+      <div class="col">
+        <ul class="list-inline quicklinks">
+          <li class="list-inline-item">
+            <a href="/legal">Privacy Policy</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
+
+  <!-- End Footer -->
+
+		<!-- Bootstrap core JavaScript -->
+		<script src="/assets/js/jquery.min.js"></script>
+		<script src="/assets/js/bootstrap.bundle.min.js"></script>
+
+		<!-- Plugin JavaScript -->
+		<script src="/assets/js/jquery.easing.min.js"></script>
+
+		<!-- Contact form JavaScript -->
+		<script src="/assets/js/jqBootstrapValidation.js"></script>
+		<script src="/assets/js/contact_me.js"></script>
+
+		<!-- Custom scripts for this template -->
+		<script src="/assets/js/agency.min.js"></script>
+		<script src="/assets/js/custom.js"></script>
+
+	</body>
+</html>
