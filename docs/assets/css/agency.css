@@ -85,6 +85,8 @@ img::-moz-selection { background: transparent; }
 .home .text-muted, .landing-page .text-muted { color: #dee2e6; }
 
 /* Components */
+.standard-page .page-section h2.section-heading { font-size: 38px; word-wrap: break-word; }
+
 .description-col { text-align: center; }
 
 .section-cta { border-top: 1px solid #aaa; border-right: 1px solid #111; border-bottom: 1px solid #111; border-left: 1px solid #aaa; }
@@ -110,7 +112,19 @@ img::-moz-selection { background: transparent; }
 
 #alexbrady .service-table { color: #fefefe; }
 
-#alexbrady .section-cta { background-color: #000; color: #fff; border-top-color: #777; border-right-color: #555; border-bottom-color: #555; border-left-color: #777; }
+#alexbrady .section-cta { background-color: #666; color: #fff; border-top-color: #111; border-right-color: #000; border-bottom-color: #000; border-left-color: #111; }
+
+#iamalexbrady { background-color: #000; color: #fff; }
+
+#iamalexbrady a:not(.btn) { color: #fff; font-weight: bold; letter-spacing: .5px; }
+
+#iamalexbrady .section-cta { background-color: #fff; color: #000; border-top-color: #fff; border-right-color: #eee; border-bottom-color: #eee; border-left-color: #fff; }
+
+#philosophy-club { background-color: #ecebe7; color: #2b2338; }
+
+#philosophy-club a:not(.btn) { color: #fff; font-weight: bold; letter-spacing: .5px; }
+
+#philosophy-club .section-cta { background-color: #2b2338; color: #ecebe7; border-top-color: #111; border-right-color: #000; border-bottom-color: #000; border-left-color: #111; }
 
 #open-source { background-color: #fff; color: #000; }
 
